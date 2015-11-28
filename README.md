@@ -20,7 +20,7 @@ compile 'com.softdream:parallaxbacklayout:0.2'
 	
 ## Step 2
 
-- Make your `Activity` extend `ParallaxActivityBase`
+- Make your Activitys extend `ParallaxActivityBase`
 
 ``` java
 public class DetailActivity extends ParallaxActivityBase {
@@ -47,6 +47,60 @@ public class DetailActivity extends ParallaxActivityBase {
 	}
 }
 ```
+
+# Other Usage
+
+- Your Activitys can extends Activity or FragmentActivity es.
+
+``` java
+ public abstract class BaseActivity extends Activity {
+    private ParallaxBackActivityHelper mHelper;
+
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        mHelper.onPostCreate();
+    }
+
+    @Override
+    public View findViewById(int id) {
+        View v = super.findViewById(id);
+        if (v == null && mHelper != null)
+            return mHelper.findViewById(id);
+        return v;
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mHelper.onActivityDestroy();
+    }
+
+    public ParallaxBackLayout getBackLayout() {
+        return mHelper.getBackLayout();
+    }
+
+    public void setBackEnable(boolean enable) {
+        getBackLayout().setEnableGesture(enable);
+    }
+
+    public void scrollToFinishActivity() {
+        mHelper.scrollToFinishActivity();
+    }
+
+    @Override
+    public void onBackPressed() {
+        scrollToFinishActivity();
+    }
+
+    @Override
+    protected void onCreate(Bundle arg0) {
+        super.onCreate(arg0);
+        mHelper = new ParallaxBackActivityHelper(this);
+    }
+}
+```
+
 # License
 
 Copyright 2015 anzewei

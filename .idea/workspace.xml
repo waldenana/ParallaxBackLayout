@@ -14,7 +14,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="24bee87c-3ba5-415b-bc8f-10b5a46930bf" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parallaxbacklayout/src/main/java/com/softdream/parallaxbacklayout/ParallaxActivityBase.java" afterPath="$PROJECT_DIR$/parallaxbacklayout/src/main/java/com/softdream/parallaxbacklayout/ParallaxActivityBase.java" />
     </list>
     <ignored path="ParallaxBackLayout.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -75,11 +75,11 @@
       <file leaf-file-name="ParallaxActivityBase.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/parallaxbacklayout/src/main/java/com/softdream/parallaxbacklayout/ParallaxActivityBase.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3305369">
-              <caret line="32" column="43" selection-start-line="32" selection-start-column="30" selection-end-line="32" selection-end-column="43" />
+            <state vertical-scroll-proportion="0.25503355">
+              <caret line="11" column="63" selection-start-line="11" selection-start-column="47" selection-end-line="11" selection-end-column="63" />
               <folding>
-                <element signature="e#1035#1036#0" expanded="true" />
-                <element signature="e#1083#1084#0" expanded="true" />
+                <element signature="e#1099#1100#0" expanded="true" />
+                <element signature="e#1147#1148#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -2895,10 +2895,10 @@
         <option value="$PROJECT_DIR$/sample/src/main/res/layout/content_main.xml" />
         <option value="$PROJECT_DIR$/sample/src/main/java/com/softdream/sample/MainActivity.java" />
         <option value="$PROJECT_DIR$/sample/src/main/java/com/softdream/sample/DetailActivity.java" />
-        <option value="$PROJECT_DIR$/parallaxbacklayout/src/main/java/com/softdream/parallaxbacklayout/ParallaxActivityBase.java" />
         <option value="$PROJECT_DIR$/parallaxbacklayout/src/main/java/com/softdream/parallaxbacklayout/ParallaxBackActivityHelper.java" />
         <option value="$PROJECT_DIR$/parallaxbacklayout/src/main/java/com/softdream/parallaxbacklayout/ParallaxBackLayout.java" />
         <option value="$PROJECT_DIR$/parallaxbacklayout/build.gradle" />
+        <option value="$PROJECT_DIR$/parallaxbacklayout/src/main/java/com/softdream/parallaxbacklayout/ParallaxActivityBase.java" />
       </list>
     </option>
   </component>
@@ -3600,8 +3600,8 @@
           <caret line="29" column="36" selection-start-line="29" selection-start-column="36" selection-end-line="29" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="false" />
-            <element signature="e#935#936#0" expanded="true" />
-            <element signature="e#991#992#0" expanded="true" />
+            <element signature="e#999#1000#0" expanded="true" />
+            <element signature="e#1055#1056#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -3929,11 +3929,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/parallaxbacklayout/src/main/java/com/softdream/parallaxbacklayout/ParallaxActivityBase.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3305369">
-          <caret line="32" column="43" selection-start-line="32" selection-start-column="30" selection-end-line="32" selection-end-column="43" />
+        <state vertical-scroll-proportion="0.25503355">
+          <caret line="11" column="63" selection-start-line="11" selection-start-column="47" selection-end-line="11" selection-end-column="63" />
           <folding>
-            <element signature="e#1035#1036#0" expanded="true" />
-            <element signature="e#1083#1084#0" expanded="true" />
+            <element signature="e#1099#1100#0" expanded="true" />
+            <element signature="e#1147#1148#0" expanded="true" />
           </folding>
         </state>
       </provider>
