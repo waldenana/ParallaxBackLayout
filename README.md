@@ -1,5 +1,7 @@
 # ParallaxBackLayout
-视差滑动返回的 Activity
+
+Parallax finish Activity.
+
 <img width="480" height="847" src="https://github.com/anzewei/ParallaxBackLayout/blob/master/ext/v0.2.gif" />
 
 # Demo Apk
@@ -10,39 +12,41 @@
 
 ## Step 1
 
-   Add these lines to your build.gradle
+- Add these lines to your build.gradle
 
-   compile 'com.softdream:parallaxbacklayout:0.2'
-	
+``` groovy
+compile 'com.softdream:parallaxbacklayout:0.2'
+``` 
 	
 ## Step 2
 
-	Make your `Activity` extend `ParallaxActivityBase`
+- Make your `Activity` extend `ParallaxActivityBase`
 
-	public class DetailActivity extends ParallaxActivityBase {
+``` java
+public class DetailActivity extends ParallaxActivityBase {
 
-		static int mCount;
-		@Override
-		protected void onCreate(Bundle savedInstanceState) {
-			super.onCreate(savedInstanceState);
-			setBackEnable(true);//enable Parallax back
-			setContentView(R.layout.content_main);
-			mCount++;
-			((TextView)findViewById(R.id.txt_content)).setText(String.format("%s %s",DetailActivity.class.getSimpleName(),mCount));
-		}
-
-		@Override
-		protected void onDestroy() {
-			super.onDestroy();
-			mCount--;
-		}
-
-		public void onClick(View view) {
-			Intent intent = new Intent(this, DetailActivity.class);
-			startActivity(intent);
-		}
+	static int mCount;
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setBackEnable(true);//enable Parallax back
+		setContentView(R.layout.content_main);
+		mCount++;
+		((TextView)findViewById(R.id.txt_content)).setText(String.format("%s %s",DetailActivity.class.getSimpleName(),mCount));
 	}
 
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		mCount--;
+	}
+
+	public void onClick(View view) {
+		Intent intent = new Intent(this, DetailActivity.class);
+		startActivity(intent);
+	}
+}
+```
 # License
 
 Copyright 2015 anzewei
