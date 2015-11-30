@@ -13,19 +13,7 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="24bee87c-3ba5-415b-bc8f-10b5a46930bf" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/parallaxbacklayout/src/main/java/com/softdream/parallaxbacklayout/ViewDragHelper.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/parallaxbacklayout/src/main/res/values/style.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parallaxbacklayout/build.gradle" afterPath="$PROJECT_DIR$/parallaxbacklayout/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parallaxbacklayout/parallaxbacklayout.iml" afterPath="$PROJECT_DIR$/parallaxbacklayout/parallaxbacklayout.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parallaxbacklayout/src/main/java/com/softdream/parallaxbacklayout/ParallaxBackLayout.java" afterPath="$PROJECT_DIR$/parallaxbacklayout/src/main/java/com/softdream/parallaxbacklayout/ParallaxBackLayout.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sample/src/main/res/values/styles.xml" afterPath="$PROJECT_DIR$/sample/src/main/res/values/styles.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/sample/src/main/res/anim/slide_from_right.xml" afterPath="$PROJECT_DIR$/parallaxbacklayout/src/main/res/anim/pl_slide_from_right.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/sample/src/main/res/anim/slide_in_from_left.xml" afterPath="$PROJECT_DIR$/parallaxbacklayout/src/main/res/anim/pl_slide_in_from_left.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/sample/src/main/res/anim/slide_out_to_left.xml" afterPath="$PROJECT_DIR$/parallaxbacklayout/src/main/res/anim/pl_slide_out_to_left.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/sample/src/main/res/anim/slide_out_to_right.xml" afterPath="$PROJECT_DIR$/parallaxbacklayout/src/main/res/anim/pl_slide_out_to_right.xml" />
-    </list>
+    <list default="true" id="24bee87c-3ba5-415b-bc8f-10b5a46930bf" name="Default" comment="" />
     <ignored path="ParallaxBackLayout.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -3455,7 +3443,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1316" height="784" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />

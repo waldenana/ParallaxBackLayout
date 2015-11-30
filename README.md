@@ -15,7 +15,7 @@ Parallax finish Activity.
 - Add these lines to your build.gradle
 
 ``` groovy
-compile 'com.softdream:parallaxbacklayout:0.2'
+compile 'com.softdream:parallaxbacklayout:0.3'
 ``` 
 	
 ## Step 2
@@ -46,6 +46,11 @@ public class DetailActivity extends ParallaxActivityBase {
 		startActivity(intent);
 	}
 }
+```
+- Add these lines to your AppTheme 
+
+```xml
+    <item name="android:windowAnimationStyle">@style/Animation_Right</item>
 ```
 
 # Other Usage
