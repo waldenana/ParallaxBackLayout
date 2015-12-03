@@ -10,10 +10,31 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="24bee87c-3ba5-415b-bc8f-10b5a46930bf" name="Default" comment="" />
+    <list default="true" id="24bee87c-3ba5-415b-bc8f-10b5a46930bf" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parallaxbacklayout/build.gradle" afterPath="$PROJECT_DIR$/parallaxbacklayout/build.gradle" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parallaxbacklayout/parallaxbacklayout.iml" afterPath="$PROJECT_DIR$/parallaxbacklayout/parallaxbacklayout.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parallaxbacklayout/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/parallaxbacklayout/src/main/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parallaxbacklayout/src/test/java/com/softdream/parallaxbacklayout/ExampleUnitTest.java" afterPath="$PROJECT_DIR$/parallaxbacklayout/src/test/java/com/softdream/parallaxbacklayout/ExampleUnitTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sample/build.gradle" afterPath="$PROJECT_DIR$/sample/build.gradle" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sample/sample.iml" afterPath="$PROJECT_DIR$/sample/sample.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sample/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/sample/src/main/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sample/src/main/res/layout/content_main.xml" afterPath="$PROJECT_DIR$/sample/src/main/res/layout/content_main.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sample/src/main/res/menu/menu_main.xml" afterPath="$PROJECT_DIR$/sample/src/main/res/menu/menu_main.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sample/src/test/java/com/softdream/sample/ExampleUnitTest.java" afterPath="$PROJECT_DIR$/sample/src/test/java/com/softdream/sample/ExampleUnitTest.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/parallaxbacklayout/src/androidTest/java/com/softdream/parallaxbacklayout/ApplicationTest.java" afterPath="$PROJECT_DIR$/parallaxbacklayout/src/androidTest/java/com/github/anzewei/parallaxbacklayout/ApplicationTest.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/parallaxbacklayout/src/main/java/com/softdream/parallaxbacklayout/ParallaxActivityBase.java" afterPath="$PROJECT_DIR$/parallaxbacklayout/src/main/java/com/github/anzewei/parallaxbacklayout/ParallaxActivityBase.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/parallaxbacklayout/src/main/java/com/softdream/parallaxbacklayout/ParallaxBackActivityHelper.java" afterPath="$PROJECT_DIR$/parallaxbacklayout/src/main/java/com/github/anzewei/parallaxbacklayout/ParallaxBackActivityHelper.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/parallaxbacklayout/src/main/java/com/softdream/parallaxbacklayout/ParallaxBackLayout.java" afterPath="$PROJECT_DIR$/parallaxbacklayout/src/main/java/com/github/anzewei/parallaxbacklayout/ParallaxBackLayout.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/parallaxbacklayout/src/main/java/com/softdream/parallaxbacklayout/ViewDragHelper.java" afterPath="$PROJECT_DIR$/parallaxbacklayout/src/main/java/com/github/anzewei/parallaxbacklayout/ViewDragHelper.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/sample/src/androidTest/java/com/softdream/sample/ApplicationTest.java" afterPath="$PROJECT_DIR$/sample/src/androidTest/java/com/github/anzewei/sample/ApplicationTest.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/sample/src/main/java/com/softdream/sample/DetailActivity.java" afterPath="$PROJECT_DIR$/sample/src/main/java/com/github/anzewei/sample/DetailActivity.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/sample/src/main/java/com/softdream/sample/MainActivity.java" afterPath="$PROJECT_DIR$/sample/src/main/java/com/github/anzewei/sample/MainActivity.java" />
+    </list>
     <ignored path="ParallaxBackLayout.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -40,42 +61,38 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
+      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/parallaxbacklayout/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="15" column="25" selection-start-line="15" selection-start-column="25" selection-end-line="15" selection-end-column="25" />
+            <state vertical-scroll-proportion="0.5100671">
+              <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sample/src/main/java/com/softdream/sample/MainActivity.java">
+      <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/parallaxbacklayout/src/main/AndroidManifest.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="10" column="44" selection-start-line="10" selection-start-column="44" selection-end-line="10" selection-end-column="44" />
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
+            <state vertical-scroll-proportion="-0.6785714">
+              <caret line="1" column="31" selection-start-line="1" selection-start-column="31" selection-end-line="1" selection-end-column="31" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DetailActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/sample/src/main/java/com/softdream/sample/DetailActivity.java">
+      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/sample/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="34" column="1" selection-start-line="13" selection-start-column="0" selection-end-line="34" selection-end-column="1" />
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
+              <caret line="13" column="16" selection-start-line="13" selection-start-column="16" selection-end-line="13" selection-end-column="16" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="ParallaxActivityBase.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/parallaxbacklayout/src/main/java/com/softdream/parallaxbacklayout/ParallaxActivityBase.java">
+        <entry file="file://$PROJECT_DIR$/parallaxbacklayout/src/main/java/com/github/anzewei/parallaxbacklayout/ParallaxActivityBase.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="28" column="26" selection-start-line="28" selection-start-column="26" selection-end-line="28" selection-end-column="26" />
@@ -85,10 +102,10 @@
         </entry>
       </file>
       <file leaf-file-name="ParallaxBackLayout.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/parallaxbacklayout/src/main/java/com/softdream/parallaxbacklayout/ParallaxBackLayout.java">
+        <entry file="file://$PROJECT_DIR$/parallaxbacklayout/src/main/java/com/github/anzewei/parallaxbacklayout/ParallaxBackLayout.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="73" column="37" selection-start-line="73" selection-start-column="37" selection-end-line="73" selection-end-column="37" />
+              <caret line="73" column="50" selection-start-line="73" selection-start-column="50" selection-end-line="73" selection-end-column="50" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -96,54 +113,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ViewDragHelper.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/parallaxbacklayout/src/main/java/com/softdream/parallaxbacklayout/ViewDragHelper.java">
+      <file leaf-file-name="ViewDragHelper.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/parallaxbacklayout/src/main/java/com/github/anzewei/parallaxbacklayout/ViewDragHelper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.5840708">
+            <state vertical-scroll-proportion="0.0">
               <caret line="1546" column="21" selection-start-line="1546" selection-start-column="21" selection-end-line="1546" selection-end-column="21" />
               <folding>
-                <element signature="e#0#62048#0" expanded="true" />
+                <element signature="e#0#62053#0" expanded="true" />
                 <element signature="imports" expanded="true" />
-                <element signature="e#8896#8897#0" expanded="true" />
-                <element signature="e#8932#8933#0" expanded="true" />
-                <element signature="e#9842#9843#0" expanded="true" />
-                <element signature="e#9878#9879#0" expanded="true" />
-                <element signature="e#10263#10264#0" expanded="true" />
-                <element signature="e#10295#10296#0" expanded="true" />
-                <element signature="e#10672#10673#0" expanded="true" />
-                <element signature="e#10704#10705#0" expanded="true" />
-                <element signature="e#12332#12333#0" expanded="true" />
-                <element signature="e#12364#12365#0" expanded="true" />
-                <element signature="e#12949#12950#0" expanded="true" />
-                <element signature="e#12981#12982#0" expanded="true" />
-                <element signature="e#13123#13276#0" expanded="true" />
-                <element signature="e#13275#13276#0" expanded="true" />
-                <element signature="e#13325#13423#0" expanded="true" />
-                <element signature="e#13422#13423#0" expanded="true" />
-                <element signature="e#16580#16581#0" expanded="true" />
-                <element signature="e#16617#16618#0" expanded="true" />
-                <element signature="e#16927#16928#0" expanded="true" />
-                <element signature="e#16964#16965#0" expanded="true" />
-                <element signature="e#17363#17364#0" expanded="true" />
-                <element signature="e#17398#17399#0" expanded="true" />
-                <element signature="e#17655#17656#0" expanded="true" />
-                <element signature="e#17688#17689#0" expanded="true" />
-                <element signature="e#18271#18272#0" expanded="true" />
-                <element signature="e#18313#18314#0" expanded="true" />
-                <element signature="e#18637#18638#0" expanded="true" />
-                <element signature="e#18669#18670#0" expanded="true" />
-                <element signature="e#18962#18963#0" expanded="true" />
-                <element signature="e#18994#18995#0" expanded="true" />
-                <element signature="e#20088#20089#0" expanded="true" />
-                <element signature="e#20124#20125#0" expanded="true" />
-                <element signature="e#20290#20291#0" expanded="true" />
-                <element signature="e#20329#20330#0" expanded="true" />
-                <element signature="e#20476#20477#0" expanded="true" />
-                <element signature="e#20509#20510#0" expanded="true" />
-                <element signature="e#36256#36257#0" expanded="true" />
-                <element signature="e#36316#36317#0" expanded="true" />
-                <element signature="e#59964#59965#0" expanded="true" />
-                <element signature="e#60019#60020#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -152,7 +129,7 @@
       <file leaf-file-name="styles.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sample/src/main/res/values/styles.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.428571">
+            <state vertical-scroll-proportion="0.0">
               <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
               <folding />
             </state>
@@ -162,7 +139,7 @@
       <file leaf-file-name="style.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/parallaxbacklayout/src/main/res/values/style.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.7142856">
+            <state vertical-scroll-proportion="0.0">
               <caret line="8" column="12" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="12" />
               <folding />
             </state>
@@ -172,7 +149,7 @@
       <file leaf-file-name="pl_slide_from_right.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/parallaxbacklayout/src/main/res/anim/pl_slide_from_right.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
+            <state vertical-scroll-proportion="0.0">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
@@ -184,7 +161,44 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="37" column="13" selection-start-line="37" selection-start-column="13" selection-end-line="37" selection-end-column="13" />
-              <folding />
+              <folding>
+                <element signature="e#0#61487#0" expanded="false" />
+                <element signature="imports" expanded="false" />
+                <element signature="e#8563#8564#0" expanded="false" />
+                <element signature="e#8599#8600#0" expanded="false" />
+                <element signature="e#9450#9451#0" expanded="false" />
+                <element signature="e#9486#9487#0" expanded="false" />
+                <element signature="e#9860#9861#0" expanded="false" />
+                <element signature="e#9892#9893#0" expanded="false" />
+                <element signature="e#10258#10259#0" expanded="false" />
+                <element signature="e#10290#10291#0" expanded="false" />
+                <element signature="e#11862#11863#0" expanded="false" />
+                <element signature="e#11894#11895#0" expanded="false" />
+                <element signature="e#12474#12475#0" expanded="false" />
+                <element signature="e#12506#12507#0" expanded="false" />
+                <element signature="e#12893#12894#0" expanded="false" />
+                <element signature="e#12941#12942#0" expanded="false" />
+                <element signature="e#15485#15486#0" expanded="false" />
+                <element signature="e#15522#15523#0" expanded="false" />
+                <element signature="e#15914#15915#0" expanded="false" />
+                <element signature="e#15949#15950#0" expanded="false" />
+                <element signature="e#16199#16200#0" expanded="false" />
+                <element signature="e#16232#16233#0" expanded="false" />
+                <element signature="e#16764#16765#0" expanded="false" />
+                <element signature="e#16806#16807#0" expanded="false" />
+                <element signature="e#17123#17124#0" expanded="false" />
+                <element signature="e#17155#17156#0" expanded="false" />
+                <element signature="e#18184#18185#0" expanded="false" />
+                <element signature="e#18220#18221#0" expanded="false" />
+                <element signature="e#18394#18395#0" expanded="false" />
+                <element signature="e#18433#18434#0" expanded="false" />
+                <element signature="e#18573#18574#0" expanded="false" />
+                <element signature="e#18606#18607#0" expanded="false" />
+                <element signature="e#34492#34493#0" expanded="false" />
+                <element signature="e#34552#34553#0" expanded="false" />
+                <element signature="e#59457#59458#0" expanded="false" />
+                <element signature="e#59512#59513#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -889,9 +903,9 @@
                 <option name="name" value="prepareComAndroidSupportRecyclerviewV72311Library" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Prepare com.softdream:parallaxbacklayout:0.3" />
+                <option name="description" value="Prepare com.github.anzewei:parallaxbacklayout:0.1" />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="prepareComSoftdreamParallaxbacklayout03Library" />
+                <option name="name" value="prepareComGithubAnzeweiParallaxbacklayout01Library" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
@@ -1930,9 +1944,9 @@
                 <option name="name" value="prepareComAndroidSupportSupportV42311Library" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Prepare com.softdream:parallaxbacklayout:0.3" />
+                <option name="description" value="Prepare com.github.anzewei:parallaxbacklayout:0.1" />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/sample" />
-                <option name="name" value="prepareComSoftdreamParallaxbacklayout03Library" />
+                <option name="name" value="prepareComGithubAnzeweiParallaxbacklayout01Library" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/sample" />
@@ -2117,7 +2131,7 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="D:\project\ParallaxBackLayout" value="5794731539538" />
+        <entry key="D:\project\ParallaxBackLayout" value="5795457282700" />
       </map>
     </option>
     <option name="projectBuildClasspath">
@@ -2924,7 +2938,6 @@
         <option value="$PROJECT_DIR$/sample/build.gradle" />
         <option value="$PROJECT_DIR$/sample/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/parallaxbacklayout/build/intermediates/bundles/debug/aapt/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/parallaxbacklayout/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/parallaxbacklayout/src/main/java/com/softdream/parallaxbacklayout/Utils.java" />
         <option value="$PROJECT_DIR$/sample/src/main/res/anim/slide_from_right.xml" />
         <option value="$PROJECT_DIR$/sample/src/main/res/layout/content_main.xml" />
@@ -2936,8 +2949,11 @@
         <option value="$PROJECT_DIR$/parallaxbacklayout/src/main/java/com/softdream/parallaxbacklayout/ParallaxBackLayout.java" />
         <option value="$PROJECT_DIR$/parallaxbacklayout/src/main/res/values/style.xml" />
         <option value="$PROJECT_DIR$/sample/src/main/res/values/styles.xml" />
-        <option value="$PROJECT_DIR$/parallaxbacklayout/build.gradle" />
         <option value="$PROJECT_DIR$/parallaxbacklayout/src/main/java/com/softdream/parallaxbacklayout/ViewDragHelper.java" />
+        <option value="$PROJECT_DIR$/parallaxbacklayout/src/main/java/com/anzewei/parallaxbacklayout/ViewDragHelper.java" />
+        <option value="$PROJECT_DIR$/parallaxbacklayout/src/main/java/com/github/anzewei/parallaxbacklayout/ParallaxBackLayout.java" />
+        <option value="$PROJECT_DIR$/parallaxbacklayout/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/parallaxbacklayout/build.gradle" />
       </list>
     </option>
   </component>
@@ -2959,11 +2975,11 @@
   </component>
   <component name="ProjectView">
     <navigator currentView="AndroidView" proportions="" version="1">
-      <flattenPackages />
+      <flattenPackages AndroidView="true" />
       <showMembers />
       <showModules />
       <showLibraryContents />
-      <hideEmptyPackages />
+      <hideEmptyPackages AndroidView="true" />
       <abbreviatePackageNames />
       <autoscrollToSource />
       <autoscrollFromSource />
@@ -2973,6 +2989,30 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="PackagesPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ParallaxBackLayout" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="parallaxbacklayout" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -3025,62 +3065,6 @@
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ParallaxBackLayout" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="parallaxbacklayout" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ParallaxBackLayout" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="parallaxbacklayout" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="parallaxbacklayout" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="PackagesPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ParallaxBackLayout" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="parallaxbacklayout" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -3091,7 +3075,7 @@
     <property name="android.project.structure.last.selected" value="sample" />
     <property name="android.project.structure.proportion" value="0.15" />
     <property name="show.do.not.copy.http.proxy.settings.to.gradle" value="false" />
-    <property name="device.picker.selection" value="b48ed88f" />
+    <property name="device.picker.selection" value="SGG6YDPF65IFJB95" />
     <property name="last_opened_file_path" value="$USER_HOME$/Desktop" />
   </component>
   <component name="RecentsManager">
@@ -3182,6 +3166,15 @@
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="" />
       <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="GroovyScriptRunConfiguration" factoryName="Groovy">
+      <module name="" />
+      <setting name="path" value="" />
+      <setting name="vmparams" value="" />
+      <setting name="params" value="" />
+      <setting name="workDir" value="file://$PROJECT_DIR$" />
+      <setting name="debug" value="false" />
       <method />
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
@@ -3443,7 +3436,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1316" height="784" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -3455,12 +3448,13 @@
       <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6512" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32952693" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.6784" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6784" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
@@ -3473,7 +3467,6 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -3497,11 +3490,80 @@
     <entry file="file://$PROJECT_DIR$/sample/src/main/res/values/styles.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parallaxbacklayout/src/main/res/values/style.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="12" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parallaxbacklayout/src/main/res/anim/pl_slide_from_right.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/android-sdk-windows/extras/android/m2repository/com/android/support/support-v4/23.1.1/support-v4-23.1.1-sources.jar!/android/support/v4/widget/ViewDragHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="37" column="13" selection-start-line="37" selection-start-column="13" selection-end-line="37" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#61487#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#8563#8564#0" expanded="false" />
+            <element signature="e#8599#8600#0" expanded="false" />
+            <element signature="e#9450#9451#0" expanded="false" />
+            <element signature="e#9486#9487#0" expanded="false" />
+            <element signature="e#9860#9861#0" expanded="false" />
+            <element signature="e#9892#9893#0" expanded="false" />
+            <element signature="e#10258#10259#0" expanded="false" />
+            <element signature="e#10290#10291#0" expanded="false" />
+            <element signature="e#11862#11863#0" expanded="false" />
+            <element signature="e#11894#11895#0" expanded="false" />
+            <element signature="e#12474#12475#0" expanded="false" />
+            <element signature="e#12506#12507#0" expanded="false" />
+            <element signature="e#12893#12894#0" expanded="false" />
+            <element signature="e#12941#12942#0" expanded="false" />
+            <element signature="e#15485#15486#0" expanded="false" />
+            <element signature="e#15522#15523#0" expanded="false" />
+            <element signature="e#15914#15915#0" expanded="false" />
+            <element signature="e#15949#15950#0" expanded="false" />
+            <element signature="e#16199#16200#0" expanded="false" />
+            <element signature="e#16232#16233#0" expanded="false" />
+            <element signature="e#16764#16765#0" expanded="false" />
+            <element signature="e#16806#16807#0" expanded="false" />
+            <element signature="e#17123#17124#0" expanded="false" />
+            <element signature="e#17155#17156#0" expanded="false" />
+            <element signature="e#18184#18185#0" expanded="false" />
+            <element signature="e#18220#18221#0" expanded="false" />
+            <element signature="e#18394#18395#0" expanded="false" />
+            <element signature="e#18433#18434#0" expanded="false" />
+            <element signature="e#18573#18574#0" expanded="false" />
+            <element signature="e#18606#18607#0" expanded="false" />
+            <element signature="e#34492#34493#0" expanded="false" />
+            <element signature="e#34552#34553#0" expanded="false" />
+            <element signature="e#59457#59458#0" expanded="false" />
+            <element signature="e#59512#59513#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sample/src/main/res/values/styles.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
           <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/parallaxbacklayout/src/main/java/com/softdream/parallaxbacklayout/ParallaxBackLayout.java">
+    <entry file="file://$PROJECT_DIR$/parallaxbacklayout/src/main/java/com/github/anzewei/parallaxbacklayout/ParallaxBackLayout.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -3511,22 +3573,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/parallaxbacklayout/src/main/java/com/softdream/parallaxbacklayout/ParallaxBackActivityHelper.java">
+    <entry file="file://$PROJECT_DIR$/parallaxbacklayout/src/main/java/com/github/anzewei/parallaxbacklayout/ParallaxBackActivityHelper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="19" column="0" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="false" />
-            <element signature="e#443#444#0" expanded="false" />
-            <element signature="e#475#476#0" expanded="false" />
-            <element signature="e#788#789#0" expanded="false" />
-            <element signature="e#846#847#0" expanded="false" />
-            <element signature="e#885#886#0" expanded="false" />
-            <element signature="e#925#926#0" expanded="false" />
-            <element signature="e#1585#1586#0" expanded="false" />
-            <element signature="e#1641#1642#0" expanded="false" />
-            <element signature="e#1690#1691#0" expanded="false" />
-            <element signature="e#1732#1733#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -3535,16 +3587,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="137" column="18" selection-start-line="137" selection-start-column="18" selection-end-line="137" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#4959#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-            <element signature="e#1220#1221#0" expanded="false" />
-            <element signature="e#1247#1248#0" expanded="false" />
-            <element signature="e#1578#1579#0" expanded="false" />
-            <element signature="e#1626#1627#0" expanded="false" />
-            <element signature="e#3205#3206#0" expanded="false" />
-            <element signature="e#3242#3243#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3555,13 +3597,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sample/src/main/java/com/softdream/sample/MainActivity.java">
+    <entry file="file://$PROJECT_DIR$/sample/src/main/java/com/github/anzewei/sample/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3590,7 +3630,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/parallaxbacklayout/src/main/java/com/softdream/parallaxbacklayout/ParallaxActivityBase.java">
+    <entry file="file://$PROJECT_DIR$/parallaxbacklayout/src/main/java/com/github/anzewei/parallaxbacklayout/ParallaxActivityBase.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="29" column="36" selection-start-line="29" selection-start-column="36" selection-end-line="29" selection-end-column="36" />
@@ -3616,26 +3656,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/parallaxbacklayout/build/poms/pom-default.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sample/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="23" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/sample/src/main/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-6.107143">
           <caret line="9" column="34" selection-start-line="9" selection-start-column="34" selection-end-line="9" selection-end-column="34" />
           <folding>
-            <element signature="e#773#791#0" expanded="false" />
+            <element signature="e#828#846#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -3654,14 +3680,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/parallaxbacklayout/src/main/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="11" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://D:/android-sdk-windows/platforms/android-23/data/res/values/styles.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-1.6037037">
@@ -3673,7 +3691,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-3.8439598">
           <caret line="60" column="7" selection-start-line="60" selection-start-column="7" selection-end-line="60" selection-end-column="7" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3681,10 +3698,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.49161074">
           <caret line="109" column="0" selection-start-line="109" selection-start-column="0" selection-end-line="109" selection-end-column="0" />
-          <folding>
-            <element signature="e#6873#6874#0" expanded="false" />
-            <element signature="e#6913#6914#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3699,13 +3712,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-83.53333">
           <caret line="1169" column="48" selection-start-line="1169" selection-start-column="48" selection-end-line="1169" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/parallaxbacklayout/build/intermediates/res/merged/release/values/values.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.24074075">
-          <caret line="214" column="0" selection-start-line="214" selection-start-column="0" selection-end-line="214" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -3772,7 +3778,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="28" column="52" selection-start-line="28" selection-start-column="52" selection-end-line="28" selection-end-column="52" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3780,16 +3785,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="28" column="50" selection-start-line="28" selection-start-column="50" selection-end-line="28" selection-end-column="50" />
-          <folding>
-            <element signature="e#0#4959#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-            <element signature="e#1220#1221#0" expanded="false" />
-            <element signature="e#1247#1248#0" expanded="false" />
-            <element signature="e#1578#1579#0" expanded="false" />
-            <element signature="e#1626#1627#0" expanded="false" />
-            <element signature="e#3205#3206#0" expanded="false" />
-            <element signature="e#3242#3243#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3797,7 +3792,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="50" column="13" selection-start-line="50" selection-start-column="13" selection-end-line="50" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -3944,43 +3938,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/parallaxbacklayout/src/main/java/com/softdream/parallaxbacklayout/ParallaxBackActivityHelper.java">
+    <entry file="file://$PROJECT_DIR$/parallaxbacklayout/src/main/java/com/github/anzewei/parallaxbacklayout/ParallaxBackActivityHelper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="57" column="33" selection-start-line="57" selection-start-column="33" selection-end-line="57" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="false" />
-            <element signature="e#443#444#0" expanded="false" />
-            <element signature="e#475#476#0" expanded="false" />
-            <element signature="e#788#789#0" expanded="false" />
-            <element signature="e#846#847#0" expanded="false" />
-            <element signature="e#885#886#0" expanded="false" />
-            <element signature="e#925#926#0" expanded="false" />
-            <element signature="e#1585#1586#0" expanded="false" />
-            <element signature="e#1641#1642#0" expanded="false" />
-            <element signature="e#1690#1691#0" expanded="false" />
-            <element signature="e#1732#1733#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sample/src/main/java/com/softdream/sample/DetailActivity.java">
+    <entry file="file://$PROJECT_DIR$/sample/src/main/java/com/github/anzewei/sample/DetailActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="34" column="1" selection-start-line="13" selection-start-column="0" selection-end-line="34" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <caret line="30" column="1" selection-start-line="9" selection-start-column="0" selection-end-line="30" selection-end-column="1" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sample/src/main/java/com/softdream/sample/MainActivity.java">
+    <entry file="file://$PROJECT_DIR$/sample/src/main/java/com/github/anzewei/sample/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="44" selection-start-line="10" selection-start-column="44" selection-end-line="10" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <caret line="9" column="44" selection-start-line="9" selection-start-column="44" selection-end-line="9" selection-end-column="44" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -3988,16 +3968,43 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="37" column="13" selection-start-line="37" selection-start-column="13" selection-end-line="37" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/parallaxbacklayout/src/main/java/com/softdream/parallaxbacklayout/ParallaxBackLayout.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="73" column="37" selection-start-line="73" selection-start-column="37" selection-end-line="73" selection-end-column="37" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#0#61487#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#8563#8564#0" expanded="false" />
+            <element signature="e#8599#8600#0" expanded="false" />
+            <element signature="e#9450#9451#0" expanded="false" />
+            <element signature="e#9486#9487#0" expanded="false" />
+            <element signature="e#9860#9861#0" expanded="false" />
+            <element signature="e#9892#9893#0" expanded="false" />
+            <element signature="e#10258#10259#0" expanded="false" />
+            <element signature="e#10290#10291#0" expanded="false" />
+            <element signature="e#11862#11863#0" expanded="false" />
+            <element signature="e#11894#11895#0" expanded="false" />
+            <element signature="e#12474#12475#0" expanded="false" />
+            <element signature="e#12506#12507#0" expanded="false" />
+            <element signature="e#12893#12894#0" expanded="false" />
+            <element signature="e#12941#12942#0" expanded="false" />
+            <element signature="e#15485#15486#0" expanded="false" />
+            <element signature="e#15522#15523#0" expanded="false" />
+            <element signature="e#15914#15915#0" expanded="false" />
+            <element signature="e#15949#15950#0" expanded="false" />
+            <element signature="e#16199#16200#0" expanded="false" />
+            <element signature="e#16232#16233#0" expanded="false" />
+            <element signature="e#16764#16765#0" expanded="false" />
+            <element signature="e#16806#16807#0" expanded="false" />
+            <element signature="e#17123#17124#0" expanded="false" />
+            <element signature="e#17155#17156#0" expanded="false" />
+            <element signature="e#18184#18185#0" expanded="false" />
+            <element signature="e#18220#18221#0" expanded="false" />
+            <element signature="e#18394#18395#0" expanded="false" />
+            <element signature="e#18433#18434#0" expanded="false" />
+            <element signature="e#18573#18574#0" expanded="false" />
+            <element signature="e#18606#18607#0" expanded="false" />
+            <element signature="e#34492#34493#0" expanded="false" />
+            <element signature="e#34552#34553#0" expanded="false" />
+            <element signature="e#59457#59458#0" expanded="false" />
+            <element signature="e#59512#59513#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -4012,7 +4019,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/sample/src/main/res/values/styles.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.428571">
+        <state vertical-scroll-proportion="0.0">
           <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
           <folding />
         </state>
@@ -4020,21 +4027,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/parallaxbacklayout/src/main/res/values/style.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.7142856">
+        <state vertical-scroll-proportion="0.0">
           <caret line="8" column="12" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="12" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/parallaxbacklayout/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="25" selection-start-line="15" selection-start-column="25" selection-end-line="15" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/parallaxbacklayout/src/main/java/com/softdream/parallaxbacklayout/ParallaxActivityBase.java">
+    <entry file="file://$PROJECT_DIR$/parallaxbacklayout/src/main/java/com/github/anzewei/parallaxbacklayout/ParallaxActivityBase.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="28" column="26" selection-start-line="28" selection-start-column="26" selection-end-line="28" selection-end-column="26" />
@@ -4042,54 +4041,48 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/parallaxbacklayout/src/main/java/com/softdream/parallaxbacklayout/ViewDragHelper.java">
+    <entry file="file://$PROJECT_DIR$/parallaxbacklayout/src/main/java/com/github/anzewei/parallaxbacklayout/ViewDragHelper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.5840708">
+        <state vertical-scroll-proportion="0.0">
           <caret line="1546" column="21" selection-start-line="1546" selection-start-column="21" selection-end-line="1546" selection-end-column="21" />
           <folding>
-            <element signature="e#0#62048#0" expanded="true" />
+            <element signature="e#0#62053#0" expanded="true" />
             <element signature="imports" expanded="true" />
-            <element signature="e#8896#8897#0" expanded="true" />
-            <element signature="e#8932#8933#0" expanded="true" />
-            <element signature="e#9842#9843#0" expanded="true" />
-            <element signature="e#9878#9879#0" expanded="true" />
-            <element signature="e#10263#10264#0" expanded="true" />
-            <element signature="e#10295#10296#0" expanded="true" />
-            <element signature="e#10672#10673#0" expanded="true" />
-            <element signature="e#10704#10705#0" expanded="true" />
-            <element signature="e#12332#12333#0" expanded="true" />
-            <element signature="e#12364#12365#0" expanded="true" />
-            <element signature="e#12949#12950#0" expanded="true" />
-            <element signature="e#12981#12982#0" expanded="true" />
-            <element signature="e#13123#13276#0" expanded="true" />
-            <element signature="e#13275#13276#0" expanded="true" />
-            <element signature="e#13325#13423#0" expanded="true" />
-            <element signature="e#13422#13423#0" expanded="true" />
-            <element signature="e#16580#16581#0" expanded="true" />
-            <element signature="e#16617#16618#0" expanded="true" />
-            <element signature="e#16927#16928#0" expanded="true" />
-            <element signature="e#16964#16965#0" expanded="true" />
-            <element signature="e#17363#17364#0" expanded="true" />
-            <element signature="e#17398#17399#0" expanded="true" />
-            <element signature="e#17655#17656#0" expanded="true" />
-            <element signature="e#17688#17689#0" expanded="true" />
-            <element signature="e#18271#18272#0" expanded="true" />
-            <element signature="e#18313#18314#0" expanded="true" />
-            <element signature="e#18637#18638#0" expanded="true" />
-            <element signature="e#18669#18670#0" expanded="true" />
-            <element signature="e#18962#18963#0" expanded="true" />
-            <element signature="e#18994#18995#0" expanded="true" />
-            <element signature="e#20088#20089#0" expanded="true" />
-            <element signature="e#20124#20125#0" expanded="true" />
-            <element signature="e#20290#20291#0" expanded="true" />
-            <element signature="e#20329#20330#0" expanded="true" />
-            <element signature="e#20476#20477#0" expanded="true" />
-            <element signature="e#20509#20510#0" expanded="true" />
-            <element signature="e#36256#36257#0" expanded="true" />
-            <element signature="e#36316#36317#0" expanded="true" />
-            <element signature="e#59964#59965#0" expanded="true" />
-            <element signature="e#60019#60020#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parallaxbacklayout/src/main/java/com/github/anzewei/parallaxbacklayout/ParallaxBackLayout.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="73" column="50" selection-start-line="73" selection-start-column="50" selection-end-line="73" selection-end-column="50" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parallaxbacklayout/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.6785714">
+          <caret line="1" column="31" selection-start-line="1" selection-start-column="31" selection-end-line="1" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sample/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="13" column="16" selection-start-line="13" selection-start-column="16" selection-end-line="13" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parallaxbacklayout/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5100671">
+          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

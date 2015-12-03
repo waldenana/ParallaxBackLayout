@@ -15,7 +15,7 @@ Parallax finish Activity.
 - Add these lines to your build.gradle
 
 ``` groovy
-compile 'com.softdream:parallaxbacklayout:0.3'
+compile 'com.github.anzewei:parallaxbacklayout:0.1'
 ``` 
 	
 ## Step 2

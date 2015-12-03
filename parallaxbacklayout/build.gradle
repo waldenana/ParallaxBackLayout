@@ -2,9 +2,9 @@ apply plugin: 'com.android.library'
 
 ext {
     bintrayRepo = 'maven'
-    bintrayName = 'com.softdream'
+    bintrayName = 'com.github.anzewei'
 
-    publishedGroupId = 'com.softdream'
+    publishedGroupId = 'com.github.anzewei'
     libraryName = 'parallaxbacklayout'
     artifact = 'parallaxbacklayout'
 
@@ -13,7 +13,7 @@ ext {
     siteUrl = 'https://github.com/anzewei/ParallaxBackLayout'
     gitUrl = 'https://github.com/anzewei/ParallaxBackLayout.git'
 
-    libraryVersion = '0.3'
+    libraryVersion = '0.1'
 
     developerId = 'anzewei'
     developerName = 'An Zewei'

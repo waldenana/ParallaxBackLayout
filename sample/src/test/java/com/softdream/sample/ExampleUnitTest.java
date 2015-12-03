@@ -1,4 +1,4 @@
-package com.softdream.sample;
+package com.github.anzewei.sample;
 
 import org.junit.Test;
 

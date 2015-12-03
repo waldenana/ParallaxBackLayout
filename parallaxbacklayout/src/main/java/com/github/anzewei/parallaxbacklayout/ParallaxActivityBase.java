@@ -1,4 +1,4 @@
-package com.softdream.parallaxbacklayout;
+package com.github.anzewei.parallaxbacklayout;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;

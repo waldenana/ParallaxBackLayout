@@ -1,12 +1,11 @@
-package com.softdream.sample;
+package com.github.anzewei.sample;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
-import com.softdream.parallaxbacklayout.ParallaxActivityBase;
+import com.github.anzewei.parallaxbacklayout.ParallaxActivityBase;
 
 public class MainActivity extends ParallaxActivityBase {
 

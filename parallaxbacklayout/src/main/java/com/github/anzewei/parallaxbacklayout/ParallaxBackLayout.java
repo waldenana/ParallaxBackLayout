@@ -1,4 +1,4 @@
-package com.softdream.parallaxbacklayout;
+package com.github.anzewei.parallaxbacklayout;
 
 import android.content.Context;
 import android.graphics.Canvas;

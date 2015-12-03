@@ -1,9 +1,7 @@
-package com.softdream.parallaxbacklayout;
+package com.github.anzewei.parallaxbacklayout;
 
 import android.app.Activity;
 import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.view.View;
 
 import java.util.Stack;

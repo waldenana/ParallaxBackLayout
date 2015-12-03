@@ -1,15 +1,11 @@
-package com.softdream.sample;
+package com.github.anzewei.sample;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-import com.softdream.parallaxbacklayout.ParallaxActivityBase;
+import com.github.anzewei.parallaxbacklayout.ParallaxActivityBase;
 
 public class DetailActivity extends ParallaxActivityBase {
 

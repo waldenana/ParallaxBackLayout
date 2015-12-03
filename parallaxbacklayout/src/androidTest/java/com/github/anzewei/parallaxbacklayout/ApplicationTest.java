@@ -1,4 +1,4 @@
-package com.softdream.parallaxbacklayout;
+package com.github.anzewei.parallaxbacklayout;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
