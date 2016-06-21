@@ -18,10 +18,10 @@ public abstract class ParallaxActivityBase extends AppCompatActivity {
 
     @Override
     public View findViewById(int id) {
-        View v = super.findViewById(id);
-        if (v == null && mHelper != null)
-            return mHelper.findViewById(id);
-        return v;
+        View v = null;
+        if (mHelper != null)
+            v = mHelper.findViewById(id);
+        return v == null ? super.findViewById(id) : v;
     }
 
     @Override
