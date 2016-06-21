@@ -1,6 +1,7 @@
 package com.github.anzewei.parallaxbacklayout;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
@@ -17,11 +18,12 @@ public abstract class ParallaxActivityBase extends AppCompatActivity {
     }
 
     @Override
+    @NonNull
     public View findViewById(int id) {
-        View v = null;
-        if (mHelper != null)
-            v = mHelper.findViewById(id);
-        return v == null ? super.findViewById(id) : v;
+        View v = super.findViewById(id);
+        if (v == null && mHelper != null)
+            return mHelper.findViewById(id);
+        return v;
     }
 
     @Override
