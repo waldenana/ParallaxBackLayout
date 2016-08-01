@@ -1,6 +1,6 @@
 # ParallaxBackLayout
 
-Parallax finish Activity.
+仿微信的滑动返回Activity.
 
 <img width="480" height="847" src="https://github.com/anzewei/ParallaxBackLayout/blob/master/ext/v0.2.gif" />
 
@@ -8,22 +8,15 @@ Parallax finish Activity.
 
 <a href="https://github.com/anzewei/ParallaxBackLayout/blob/master/ext/demo.apk?raw=true">DOWNLOAD</a>
 
+# 使用说明
 
-<a href="https://github.com/anzewei/ParallaxBackLayout/blob/master/README_ZH.md">简体中文</a>
-
-# Usage
-
-## Step 1
-
-- Add these lines to your build.gradle
+## 首先添加引用到Model的build.gradle
 
 ``` groovy
 compile 'com.github.anzewei:parallaxbacklayout:0.1'
 ``` 
 	
-## Step 2
-
-- Make your Activitys extend `ParallaxActivityBase`
+## 继承滑动返回的Activity
 
 ``` java
 public class DetailActivity extends ParallaxActivityBase {
@@ -37,15 +30,15 @@ public class DetailActivity extends ParallaxActivityBase {
 
 }
 ```
-- Add these lines to your AppTheme 
+- 为了避免Activity的动画冲突，需要添加以下代码到theme中
 
 ```xml
     <item name="android:windowAnimationStyle">@style/Animation_Right</item>
 ```
 
-# Other Usage
+# 其他使用
 
-- Your Activitys can extends Activity or FragmentActivity es.
+- 如果ParallaxActivityBase不能满足需求，可以通过自己封装Activity，只需要在Activity中实现ParallaxBackActivityHelper的相关方法即可
 
 ``` java
  public class MainActivity extends Activity/FragmentActivity/AppCompatActivity... {
