@@ -37,7 +37,7 @@ public abstract class ParallaxActivityBase extends AppCompatActivity {
     }
 
     public void setBackEnable(boolean enable) {
-        getBackLayout().setEnableGesture(enable);
+        mHelper.setBackEnable(enable);
     }
 
     public void scrollToFinishActivity() {

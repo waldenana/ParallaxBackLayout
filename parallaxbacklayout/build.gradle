@@ -13,7 +13,7 @@ ext {
     siteUrl = 'https://github.com/anzewei/ParallaxBackLayout'
     gitUrl = 'https://github.com/anzewei/ParallaxBackLayout.git'
 
-    libraryVersion = '0.4'
+    libraryVersion = '0.5'
 
     developerId = 'anzewei'
     developerName = 'An Zewei'
@@ -26,13 +26,13 @@ ext {
 
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion '23.0.2'
+    compileSdkVersion 24
+    buildToolsVersion '24.0.1'
 
     defaultConfig {
         minSdkVersion 7
         targetSdkVersion 22
-        versionCode 2
+        versionCode 3
         versionName libraryVersion
     }
     buildTypes {
@@ -45,7 +45,7 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.android.support:appcompat-v7:23.4.0'
+    compile 'com.android.support:appcompat-v7:24.1.1'
 }
 apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
 apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'

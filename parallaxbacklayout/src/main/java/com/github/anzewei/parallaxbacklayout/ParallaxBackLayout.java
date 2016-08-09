@@ -178,7 +178,7 @@ public class ParallaxBackLayout extends FrameLayout {
     @Override
     protected boolean drawChild(Canvas canvas, View child, long drawingTime) {
         final boolean drawContent = child == mContentView;
-        if (mEnable && getContext() instanceof ParallaxActivityBase)
+        if (mEnable && mSwipeHelper.hasSecondActivity())
             drawThumb(canvas, child);
         boolean ret = super.drawChild(canvas, child, drawingTime);
         if (mScrimOpacity > 0 && drawContent

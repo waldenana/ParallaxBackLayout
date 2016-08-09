@@ -26,6 +26,10 @@ public class ParallaxBackActivityHelper {
         sActivities.push(this);
     }
 
+    public boolean hasSecondActivity() {
+        return sActivities.size() >= 2;
+    }
+
     public void onPostCreate() {
         mParallaxBackLayout.attachToActivity(this);
     }
