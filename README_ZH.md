@@ -13,7 +13,7 @@
 ## 首先添加引用到Model的build.gradle
 
 ``` groovy
-compile 'com.github.anzewei:parallaxbacklayout:0.1'
+compile 'com.github.anzewei:parallaxbacklayout:0.5'
 ``` 
 	
 ## 继承滑动返回的Activity
