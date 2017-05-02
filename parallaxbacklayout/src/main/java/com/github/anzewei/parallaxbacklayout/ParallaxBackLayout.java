@@ -1,14 +1,26 @@
 package com.github.anzewei.parallaxbacklayout;
 
 import android.content.Context;
+import android.content.res.Configuration;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 public class ParallaxBackLayout extends FrameLayout {
 
@@ -46,8 +58,11 @@ public class ParallaxBackLayout extends FrameLayout {
 
     private int mContentTop;
 
-
+    private String mThumbFile;
     private Drawable mShadowLeft;
+    //下面一层的缩略图
+    private Bitmap mSecondBitmap;
+    private Paint mPaintCache;
 
     private float mScrimOpacity;
 
@@ -72,6 +87,7 @@ public class ParallaxBackLayout extends FrameLayout {
         super(context, attrs);
         mDragHelper = ViewDragHelper.create(this, new ViewDragCallback());
         mShadowLeft = getResources().getDrawable(R.drawable.shadow_left);
+        mPaintCache = new Paint(Paint.ANTI_ALIAS_FLAG);
     }
 
 
@@ -118,11 +134,53 @@ public class ParallaxBackLayout extends FrameLayout {
         mScrollThreshold = threshold;
     }
 
+
+    /**
+     * 创建缩略图
+     */
+    public void onStartActivity() {
+        final Bitmap bitmap = getBitmapFromView(ParallaxBackLayout.this);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+
+                FileOutputStream fileOutputStream = null;
+                try {
+                    File bmpFile = getCacheFile();
+                    fileOutputStream = new FileOutputStream(bmpFile);
+                    bitmap.compress(Bitmap.CompressFormat.PNG, 90, fileOutputStream);
+                    bitmap.recycle();
+                    fileOutputStream.close();
+                } catch (FileNotFoundException e) {
+                    if (BuildConfig.DEBUG)
+                        e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
+
+    /*
+     * 添加view到activity上
+     */
+    public void attachToActivity(ParallaxBackActivityHelper activity) {
+        mSwipeHelper = activity;
+        ViewGroup decor = (ViewGroup) activity.getActivity().getWindow().getDecorView();
+        ViewGroup decorChild = (ViewGroup) decor.getChildAt(0);
+        decor.removeView(decorChild);
+        addView(decorChild);
+        setContentView(decorChild);
+        decor.addView(this);
+        mThumbFile = activity.getActivity().getIntent().getStringExtra("plfile");
+    }
+
     /**
      * Scroll out contentView and finish the activity
      */
     public void scrollToFinishActivity() {
-        if (!mEnable){
+        if (!mEnable || mThumbFile == null) {
             mSwipeHelper.getActivity().finish();
             return;
         }
@@ -133,6 +191,52 @@ public class ParallaxBackLayout extends FrameLayout {
 
         mDragHelper.smoothSlideViewTo(mContentView, left, top);
         invalidate();
+    }
+
+    /**
+     * 创建缩略图
+     *
+     * @param view
+     * @return
+     */
+    public static Bitmap getBitmapFromView(View view) {
+        //Define a bitmap with the same size as the view
+        Bitmap returnedBitmap = Bitmap.createBitmap(view.getWidth(), view.getHeight(), Bitmap.Config.ARGB_8888);
+        //Bind a canvas to it
+        Canvas canvas = new Canvas(returnedBitmap);
+        //Get the view's background
+        Drawable bgDrawable = view.getBackground();
+        if (bgDrawable != null)
+            //has background drawable, then draw it on the canvas
+            bgDrawable.draw(canvas);
+        else
+            //does not have background drawable, then draw white background on the canvas
+            canvas.drawColor(Color.WHITE);
+        // draw the view on the canvas
+        view.draw(canvas);
+        //return the bitmap
+        return returnedBitmap;
+    }
+
+    @Override
+    protected void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        onStartActivity();
+    }
+
+    @Override
+    protected Parcelable onSaveInstanceState() {
+        Parcelable superState = super.onSaveInstanceState();
+        SavedState ss = new SavedState(superState);
+        ss.filename = mThumbFile;
+        return ss;
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Parcelable state) {
+        SavedState ss = (SavedState) state;
+        super.onRestoreInstanceState(ss.getSuperState());
+        mThumbFile = ss.filename;
     }
 
     @Override
@@ -151,7 +255,7 @@ public class ParallaxBackLayout extends FrameLayout {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        if (!mEnable) {
+        if (!mEnable || mThumbFile == null) {
             return false;
         }
         mDragHelper.processTouchEvent(event);
@@ -176,12 +280,20 @@ public class ParallaxBackLayout extends FrameLayout {
     }
 
     @Override
+    public void computeScroll() {
+        mScrimOpacity = 1 - mScrollPercent;
+        if (mDragHelper.continueSettling(true)) {
+            ViewCompat.postInvalidateOnAnimation(this);
+        }
+    }
+
+    @Override
     protected boolean drawChild(Canvas canvas, View child, long drawingTime) {
         final boolean drawContent = child == mContentView;
-        if (mEnable && mSwipeHelper.hasSecondActivity())
+        if (mEnable && mThumbFile != null)
             drawThumb(canvas, child);
         boolean ret = super.drawChild(canvas, child, drawingTime);
-        if (mScrimOpacity > 0 && drawContent
+        if (mThumbFile != null && mEnable && mScrimOpacity > 0 && drawContent
                 && mDragHelper.getViewDragState() != ViewDragHelper.STATE_IDLE) {
             drawShadow(canvas, child);
             drawScrim(canvas, child);
@@ -200,19 +312,35 @@ public class ParallaxBackLayout extends FrameLayout {
         canvas.drawColor(color);
     }
 
+    /*
+     * 绘制上一层view
+     */
     private void drawThumb(Canvas canvas, View child) {
         if (child.getLeft() == 0)
             return;
         int store = canvas.save();
-        int left  = (child.getLeft() - getWidth()) / 2;
+        int left = (child.getLeft() - getWidth()) / 2;
         canvas.translate(left, 0);
-        canvas.clipRect(0,0,(child.getLeft() + getWidth()) / 2,child.getBottom());
-        ParallaxBackActivityHelper activityBase = mSwipeHelper.getSecondActivity();
-        if (activityBase != null)
-            activityBase.drawThumb(canvas);
+        canvas.clipRect(0, 0, (child.getLeft() + getWidth()) / 2, child.getBottom());
+        if (mThumbFile != null) {
+            Bitmap bitmap = getCacheBitmap(mThumbFile);
+            if (bitmap != null)
+                canvas.drawBitmap(bitmap, 0, 0, mPaintCache);
+        }
+
         canvas.restoreToCount(store);
     }
 
+    private Bitmap getCacheBitmap(String cacheFile) {
+        if (mSecondBitmap != null && !mSecondBitmap.isRecycled())
+            return mSecondBitmap;
+        mSecondBitmap = BitmapFactory.decodeFile(cacheFile);
+        return mSecondBitmap;
+    }
+
+    /*
+     * 绘制两层中间的阴影
+     */
     private void drawShadow(Canvas canvas, View child) {
         mShadowLeft.setBounds(child.getLeft() - mShadowLeft.getIntrinsicWidth(), child.getTop(),
                 child.getLeft(), child.getBottom());
@@ -220,23 +348,12 @@ public class ParallaxBackLayout extends FrameLayout {
         mShadowLeft.draw(canvas);
     }
 
-    public void attachToActivity(ParallaxBackActivityHelper activity) {
-        mSwipeHelper = activity;
-        ViewGroup decor = (ViewGroup) activity.getActivity().getWindow().getDecorView();
-        ViewGroup decorChild = (ViewGroup) decor.getChildAt(0);
-        decor.removeView(decorChild);
-        addView(decorChild);
-        setContentView(decorChild);
-        decor.addView(this);
+    public File getCacheFile() {
+        File file = getContext().getCacheDir();
+        File bmpFile = new File(file, String.valueOf(System.identityHashCode(this)));
+        return bmpFile;
     }
 
-    @Override
-    public void computeScroll() {
-        mScrimOpacity = 1 - mScrollPercent;
-        if (mDragHelper.continueSettling(true)) {
-            ViewCompat.postInvalidateOnAnimation(this);
-        }
-    }
 
     private class ViewDragCallback extends ViewDragHelper.Callback {
         private boolean mIsScrollOverValid;
@@ -276,10 +393,15 @@ public class ParallaxBackLayout extends FrameLayout {
                 mIsScrollOverValid = true;
             }
 
-            if (mScrollPercent >= 1) {
+            if (mScrollPercent >= .9) {
                 if (!mSwipeHelper.getActivity().isFinishing()) {
                     mSwipeHelper.getActivity().finish();
-                    mSwipeHelper.getActivity().overridePendingTransition(0,0);
+                    mSwipeHelper.getActivity().overridePendingTransition(0, 0);
+                    if (mThumbFile != null) {
+                        File file = new File(mThumbFile);
+                        if (file.exists())
+                            file.delete();
+                    }
                 }
             }
         }
@@ -313,5 +435,35 @@ public class ParallaxBackLayout extends FrameLayout {
         public void onViewDragStateChanged(int state) {
             super.onViewDragStateChanged(state);
         }
+    }
+
+    static class SavedState extends BaseSavedState {
+        String filename;
+
+        SavedState(Parcelable superState) {
+            super(superState);
+        }
+
+        private SavedState(Parcel in) {
+            super(in);
+            filename = in.readString();
+        }
+
+        @Override
+        public void writeToParcel(Parcel out, int flags) {
+            super.writeToParcel(out, flags);
+            out.writeString(filename);
+        }
+
+        public static final Parcelable.Creator<SavedState> CREATOR
+                = new Parcelable.Creator<SavedState>() {
+            public SavedState createFromParcel(Parcel in) {
+                return new SavedState(in);
+            }
+
+            public SavedState[] newArray(int size) {
+                return new SavedState[size];
+            }
+        };
     }
 }

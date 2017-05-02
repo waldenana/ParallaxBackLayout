@@ -24,3 +24,8 @@ proguard/
 
 # Log Files
 *.log
+/.idea
+/*.iml
+*.iml
+/*/*.iml
+/parallaxbacklayout/*.iml

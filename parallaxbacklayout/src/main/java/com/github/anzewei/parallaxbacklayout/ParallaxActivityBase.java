@@ -1,7 +1,9 @@
 package com.github.anzewei.parallaxbacklayout;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
@@ -26,12 +28,6 @@ public abstract class ParallaxActivityBase extends AppCompatActivity {
         return v;
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        mHelper.onActivityDestroy();
-    }
-
     public ParallaxBackLayout getBackLayout() {
         return mHelper.getBackLayout();
     }
@@ -49,6 +45,13 @@ public abstract class ParallaxActivityBase extends AppCompatActivity {
         if (!getSupportFragmentManager().popBackStackImmediate()) {
             scrollToFinishActivity();
         }
+    }
+
+    @Override
+    public void startActivityForResult(Intent intent, int requestCode, @Nullable Bundle options) {
+        intent.putExtra("plfile",mHelper.getBackLayout().getCacheFile().getAbsolutePath());
+        super.startActivityForResult(intent, requestCode, options);
+        mHelper.onStartActivity();
     }
 
     @Override

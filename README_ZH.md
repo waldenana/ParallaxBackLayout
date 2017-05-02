@@ -13,7 +13,7 @@
 ## 首先添加引用到Model的build.gradle
 
 ``` groovy
-compile 'com.github.anzewei:parallaxbacklayout:0.5'
+compile 'com.github.anzewei:parallaxbacklayout:0.6'
 ``` 
 	
 ## 继承滑动返回的Activity
@@ -51,6 +51,7 @@ public class DetailActivity extends ParallaxActivityBase {
     }
 
     @Override
+    @NonNull
     public View findViewById(int id) {
         View v = super.findViewById(id);
         if (v == null && mHelper != null)
@@ -58,18 +59,12 @@ public class DetailActivity extends ParallaxActivityBase {
         return v;
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        mHelper.onActivityDestroy();
-    }
-
     public ParallaxBackLayout getBackLayout() {
         return mHelper.getBackLayout();
     }
 
     public void setBackEnable(boolean enable) {
-        getBackLayout().setEnableGesture(enable);
+        mHelper.setBackEnable(enable);
     }
 
     public void scrollToFinishActivity() {
@@ -78,7 +73,16 @@ public class DetailActivity extends ParallaxActivityBase {
 
     @Override
     public void onBackPressed() {
-        scrollToFinishActivity();
+        if (!getSupportFragmentManager().popBackStackImmediate()) {
+            scrollToFinishActivity();
+        }
+    }
+
+    @Override
+    public void startActivityForResult(Intent intent, int requestCode, @Nullable Bundle options) {
+        intent.putExtra("plfile",mHelper.getBackLayout().getCacheFile().getAbsolutePath());
+        super.startActivityForResult(intent, requestCode, options);
+        mHelper.onStartActivity();
     }
 
     @Override
@@ -88,6 +92,9 @@ public class DetailActivity extends ParallaxActivityBase {
     }
 }
 ```
+# 更新
+  日期 2017.05.02  版本 0.6
+      修复了某些情况下灰屏的问题
 
 # License
 
