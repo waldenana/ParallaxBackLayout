@@ -13,7 +13,7 @@ ext {
     siteUrl = 'https://github.com/anzewei/ParallaxBackLayout'
     gitUrl = 'https://github.com/anzewei/ParallaxBackLayout.git'
 
-    libraryVersion = '0.6'
+    libraryVersion = '0.7'
 
     developerId = 'anzewei'
     developerName = 'An Zewei'

@@ -60,7 +60,7 @@ public class ParallaxBackLayout extends FrameLayout {
 
     private String mThumbFile;
     private Drawable mShadowLeft;
-    //下面一层的缩略图
+
     private Bitmap mSecondBitmap;
     private Paint mPaintCache;
 
@@ -136,10 +136,10 @@ public class ParallaxBackLayout extends FrameLayout {
 
 
     /**
-     * 创建缩略图
+     * create thumb
      */
-    public void onStartActivity() {
-        final Bitmap bitmap = getBitmapFromView(ParallaxBackLayout.this);
+    public void onStartActivity() { buildDrawingCache();
+        final Bitmap bitmap =getDrawingCache();
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -148,10 +148,12 @@ public class ParallaxBackLayout extends FrameLayout {
                 FileOutputStream fileOutputStream = null;
                 try {
                     File bmpFile = getCacheFile();
-                    fileOutputStream = new FileOutputStream(bmpFile);
+                    File tmpFile = new File(bmpFile.getParent(),bmpFile.getName()+"tmp");
+                    fileOutputStream = new FileOutputStream(tmpFile);
                     bitmap.compress(Bitmap.CompressFormat.PNG, 90, fileOutputStream);
-                    bitmap.recycle();
+                    destroyDrawingCache();
                     fileOutputStream.close();
+                    tmpFile.renameTo(bmpFile);
                 } catch (FileNotFoundException e) {
                     if (BuildConfig.DEBUG)
                         e.printStackTrace();
@@ -162,8 +164,8 @@ public class ParallaxBackLayout extends FrameLayout {
         }).start();
     }
 
-    /*
-     * 添加view到activity上
+    /**
+     * attach to activity
      */
     public void attachToActivity(ParallaxBackActivityHelper activity) {
         mSwipeHelper = activity;
@@ -184,6 +186,9 @@ public class ParallaxBackLayout extends FrameLayout {
             mSwipeHelper.getActivity().finish();
             return;
         }
+        if (!new File(mThumbFile).exists()){
+            return;
+        }
         final int childWidth = mContentView.getWidth();
         int left = 0, top = 0;
         left = childWidth;
@@ -191,31 +196,6 @@ public class ParallaxBackLayout extends FrameLayout {
 
         mDragHelper.smoothSlideViewTo(mContentView, left, top);
         invalidate();
-    }
-
-    /**
-     * 创建缩略图
-     *
-     * @param view
-     * @return
-     */
-    public static Bitmap getBitmapFromView(View view) {
-        //Define a bitmap with the same size as the view
-        Bitmap returnedBitmap = Bitmap.createBitmap(view.getWidth(), view.getHeight(), Bitmap.Config.ARGB_8888);
-        //Bind a canvas to it
-        Canvas canvas = new Canvas(returnedBitmap);
-        //Get the view's background
-        Drawable bgDrawable = view.getBackground();
-        if (bgDrawable != null)
-            //has background drawable, then draw it on the canvas
-            bgDrawable.draw(canvas);
-        else
-            //does not have background drawable, then draw white background on the canvas
-            canvas.drawColor(Color.WHITE);
-        // draw the view on the canvas
-        view.draw(canvas);
-        //return the bitmap
-        return returnedBitmap;
     }
 
     @Override
@@ -255,7 +235,7 @@ public class ParallaxBackLayout extends FrameLayout {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        if (!mEnable || mThumbFile == null) {
+        if (!mEnable || mThumbFile == null || !new File(mThumbFile).exists()) {
             return false;
         }
         mDragHelper.processTouchEvent(event);
@@ -313,7 +293,7 @@ public class ParallaxBackLayout extends FrameLayout {
     }
 
     /*
-     * 绘制上一层view
+     *
      */
     private void drawThumb(Canvas canvas, View child) {
         if (child.getLeft() == 0)
@@ -338,8 +318,8 @@ public class ParallaxBackLayout extends FrameLayout {
         return mSecondBitmap;
     }
 
-    /*
-     * 绘制两层中间的阴影
+    /**
+     * draw shadow
      */
     private void drawShadow(Canvas canvas, View child) {
         mShadowLeft.setBounds(child.getLeft() - mShadowLeft.getIntrinsicWidth(), child.getTop(),
