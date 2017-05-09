@@ -30,7 +30,7 @@ android {
     buildToolsVersion '25.0.0'
 
     defaultConfig {
-        minSdkVersion 7
+        minSdkVersion 14
         targetSdkVersion 22
         versionCode 3
         versionName libraryVersion

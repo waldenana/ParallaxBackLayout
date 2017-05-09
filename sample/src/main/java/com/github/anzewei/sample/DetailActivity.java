@@ -3,13 +3,15 @@ package com.github.anzewei.sample;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
-import com.github.anzewei.parallaxbacklayout.ParallaxActivityBase;
+import com.github.anzewei.parallaxbacklayout.ParallaxBack;
 
-public class DetailActivity extends ParallaxActivityBase {
+@ParallaxBack
+public class DetailActivity extends AppCompatActivity {
 
     private int mCount;
     @Override
