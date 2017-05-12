@@ -11,5 +11,9 @@ import java.lang.annotation.Target;
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface ParallaxBack {
-    public boolean Backable() default true;
+    public enum ViewType {BITMAP, DECORVIEW}
+
+    ViewType viewType() default ViewType.DECORVIEW;
+
+
 }

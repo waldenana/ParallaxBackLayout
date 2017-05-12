@@ -197,7 +197,7 @@ public class ParallaxBackLayout extends FrameLayout {
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent event) {
-        if (!mEnable) {
+        if (!mEnable|| !mBackgroundView.canGoBack()) {
             return false;
         }
         try {
@@ -211,7 +211,7 @@ public class ParallaxBackLayout extends FrameLayout {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        if (!mEnable) {
+        if (!mEnable || !mBackgroundView.canGoBack()) {
             return false;
         }
         mDragHelper.processTouchEvent(event);
@@ -396,5 +396,6 @@ public class ParallaxBackLayout extends FrameLayout {
 
     public interface IBackgroundView{
         void draw(Canvas canvas);
+        boolean canGoBack();
     }
 }
