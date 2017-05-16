@@ -3,19 +3,18 @@ package com.github.anzewei.sample;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
-import com.github.anzewei.parallaxbacklayout.ParallaxActivityBase;
-
-public class MainActivity extends ParallaxActivityBase {
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().setElevation(0);
-        setBackEnable(false);
+//        setBackEnable(false);
         setContentView(R.layout.content_main);
         ((TextView)findViewById(R.id.txt_content)).setText("Main Activity");
     }
@@ -32,7 +31,7 @@ public class MainActivity extends ParallaxActivityBase {
     }
 
     public void onClick(View view) {
-        Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+        Intent intent = new Intent(MainActivity.this, ScrollingActivity.class);
         startActivity(intent);
     }
 }

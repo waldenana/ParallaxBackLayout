@@ -5,15 +5,15 @@ ext {
     bintrayName = 'com.github.anzewei'
 
     publishedGroupId = 'com.github.anzewei'
-    libraryName = 'parallaxbacklayout'
-    artifact = 'parallaxbacklayout'
+    libraryName = 'parallaxbacklayout2'
+    artifact = 'parallaxbacklayout2'
 
-    libraryDescription = 'An Android library that help you to finish activity with swipe back gesture.'
+    libraryDescription = 'An Android library that help you to finish activity with swipe back gesture and you can get parallax scrolling effect'
 
     siteUrl = 'https://github.com/anzewei/ParallaxBackLayout'
     gitUrl = 'https://github.com/anzewei/ParallaxBackLayout.git'
 
-    libraryVersion = '0.7'
+    libraryVersion = '1.0'
 
     developerId = 'anzewei'
     developerName = 'An Zewei'
@@ -30,7 +30,7 @@ android {
     buildToolsVersion '25.0.0'
 
     defaultConfig {
-        minSdkVersion 7
+        minSdkVersion 14
         targetSdkVersion 22
         versionCode 3
         versionName libraryVersion

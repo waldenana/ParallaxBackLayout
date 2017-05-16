@@ -3,13 +3,16 @@ package com.github.anzewei.sample;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
-import com.github.anzewei.parallaxbacklayout.ParallaxActivityBase;
+import com.github.anzewei.parallaxbacklayout.ParallaxBack;
+import com.github.anzewei.parallaxbacklayout.ParallaxHelper;
 
-public class DetailActivity extends ParallaxActivityBase {
+@ParallaxBack
+public class DetailActivity extends AppCompatActivity {
 
     private int mCount;
     @Override
@@ -17,6 +20,7 @@ public class DetailActivity extends ParallaxActivityBase {
         super.onCreate(savedInstanceState);
         getSupportActionBar().setElevation(0);
         setContentView(R.layout.content_main);
+
         mCount = getIntent().getIntExtra("c",1);
         ((TextView) findViewById(R.id.txt_content)).setText(String.format("%s %s", DetailActivity.class.getSimpleName(), mCount));
     }
