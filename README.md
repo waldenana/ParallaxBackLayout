@@ -1,6 +1,7 @@
 # ParallaxBackLayout
+[![Download](https://api.bintray.com/packages/anzewei/maven/com.github.anzewei/images/download.svg)](https://bintray.com/anzewei/maven/com.github.anzewei/_latestVersion)
 
-Parallax finish Activity.
+Finish an Activity with parallax scrolling effect.
 
 <img width="480" height="847" src="https://github.com/anzewei/ParallaxBackLayout/blob/master/ext/v0.2.gif" />
 
@@ -18,91 +19,44 @@ Parallax finish Activity.
 - Add these lines to your build.gradle
 
 ``` groovy
-compile 'com.github.anzewei:parallaxbacklayout:0.6'
+compile 'com.github.anzewei:parallaxbacklayout2:1.0'
 ``` 
 	
 ## Step 2
 
-- Make your Activitys extend `ParallaxActivityBase`
+- register ParallaxHelper to application
 
 ``` java
-public class DetailActivity extends ParallaxActivityBase {
+  registerActivityLifecycleCallbacks(ParallaxHelper.getInstance());
+```
+- Add annontion to  the activity you want to parallax back
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setBackEnable(true);//enable Parallax back
-		setContentView(R.layout.content_main);
-	}
-
+``` java
+@ParallaxBack
+public class DetailActivity extends AppCompatActivity {
+ 。。。
 }
 ```
-- Add these lines to your AppTheme 
-
-```xml
-    <item name="android:windowAnimationStyle">@style/Animation_Right</item>
-```
-
 # Other Usage
 
-- Your Activitys can extends Activity or FragmentActivity es.
+
 
 ``` java
- public class MainActivity extends Activity/FragmentActivity/AppCompatActivity... {
-    private ParallaxBackActivityHelper mHelper;
-    
-	@Override
-    protected void onPostCreate(Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
-        mHelper.onPostCreate();
-    }
-
-    @Override
-    @NonNull
-    public View findViewById(int id) {
-        View v = super.findViewById(id);
-        if (v == null && mHelper != null)
-            return mHelper.findViewById(id);
-        return v;
-    }
-
-    public ParallaxBackLayout getBackLayout() {
-        return mHelper.getBackLayout();
-    }
-
-    public void setBackEnable(boolean enable) {
-        mHelper.setBackEnable(enable);
-    }
-
-    public void scrollToFinishActivity() {
-        mHelper.scrollToFinishActivity();
-    }
-
-    @Override
-    public void onBackPressed() {
-        if (!getSupportFragmentManager().popBackStackImmediate()) {
-            scrollToFinishActivity();
-        }
-    }
-
-    @Override
-    public void startActivityForResult(Intent intent, int requestCode, @Nullable Bundle options) {
-        intent.putExtra("plfile",mHelper.getBackLayout().getCacheFile().getAbsolutePath());
-        super.startActivityForResult(intent, requestCode, options);
-        mHelper.onStartActivity();
-    }
-
-    @Override
-    protected void onCreate(Bundle arg0) {
-        super.onCreate(arg0);
-        mHelper = new ParallaxBackActivityHelper(this);
-    }
+@ParallaxBack
+public class DetailActivity extends AppCompatActivity {
+     private void disableBack(){
+         ParallaxHelper.getInstance().getParallaxBackLayout(this).setEnableGesture(false);
+     }
 }
 ```
+
+# Update
+- Date 2017.05.16  Version  1.0
+    Use annotation 
 
 # License
 
-Copyright 2015 anzewei
+Copyright 2017 anzewei
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
 

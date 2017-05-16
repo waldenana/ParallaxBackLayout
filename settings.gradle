@@ -1,1 +1,1 @@
-include ':parallaxbacklayout', ':sample'
+include ':parallaxbacklayout2', ':sample'

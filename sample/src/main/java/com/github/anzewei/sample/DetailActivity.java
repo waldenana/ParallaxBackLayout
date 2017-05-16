@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.github.anzewei.parallaxbacklayout.ParallaxBack;
+import com.github.anzewei.parallaxbacklayout.ParallaxHelper;
 
 @ParallaxBack
 public class DetailActivity extends AppCompatActivity {
@@ -19,6 +20,7 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getSupportActionBar().setElevation(0);
         setContentView(R.layout.content_main);
+
         mCount = getIntent().getIntExtra("c",1);
         ((TextView) findViewById(R.id.txt_content)).setText(String.format("%s %s", DetailActivity.class.getSimpleName(), mCount));
     }

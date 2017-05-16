@@ -1,6 +1,6 @@
 # ParallaxBackLayout
-
-仿微信的滑动返回Activity.
+[![Download](https://api.bintray.com/packages/anzewei/maven/com.github.anzewei/images/download.svg)](https://bintray.com/anzewei/maven/com.github.anzewei/_latestVersion)
+仿微信的滑动返回Activity（视差滑动）.
 
 <img width="480" height="847" src="https://github.com/anzewei/ParallaxBackLayout/blob/master/ext/v0.2.gif" />
 
@@ -13,92 +13,51 @@
 ## 首先添加引用到Model的build.gradle
 
 ``` groovy
-compile 'com.github.anzewei:parallaxbacklayout:0.6'
+compile 'com.github.anzewei:parallaxbacklayout2:1.0'
 ``` 
 	
-## 继承滑动返回的Activity
+## 在application中注册ParallaxHelper
 
 ``` java
-public class DetailActivity extends ParallaxActivityBase {
-
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setBackEnable(true);//enable Parallax back
-		setContentView(R.layout.content_main);
-	}
-
-}
+     registerActivityLifecycleCallbacks(ParallaxHelper.getInstance());
 ```
-- 为了避免Activity的动画冲突，需要添加以下代码到theme中
-
-```xml
-    <item name="android:windowAnimationStyle">@style/Animation_Right</item>
-```
-
-# 其他使用
-
-- 如果ParallaxActivityBase不能满足需求，可以通过自己封装Activity，只需要在Activity中实现ParallaxBackActivityHelper的相关方法即可
+## 对需要滑动的activity增加annotation
 
 ``` java
- public class MainActivity extends Activity/FragmentActivity/AppCompatActivity... {
-    private ParallaxBackActivityHelper mHelper;
-
-    @Override
-    protected void onPostCreate(Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
-        mHelper.onPostCreate();
-    }
-
-    @Override
-    @NonNull
-    public View findViewById(int id) {
-        View v = super.findViewById(id);
-        if (v == null && mHelper != null)
-            return mHelper.findViewById(id);
-        return v;
-    }
-
-    public ParallaxBackLayout getBackLayout() {
-        return mHelper.getBackLayout();
-    }
-
-    public void setBackEnable(boolean enable) {
-        mHelper.setBackEnable(enable);
-    }
-
-    public void scrollToFinishActivity() {
-        mHelper.scrollToFinishActivity();
-    }
-
-    @Override
-    public void onBackPressed() {
-        if (!getSupportFragmentManager().popBackStackImmediate()) {
-            scrollToFinishActivity();
-        }
-    }
-
-    @Override
-    public void startActivityForResult(Intent intent, int requestCode, @Nullable Bundle options) {
-        intent.putExtra("plfile",mHelper.getBackLayout().getCacheFile().getAbsolutePath());
-        super.startActivityForResult(intent, requestCode, options);
-        mHelper.onStartActivity();
-    }
-
-    @Override
-    protected void onCreate(Bundle arg0) {
-        super.onCreate(arg0);
-        mHelper = new ParallaxBackActivityHelper(this);
-    }
+@ParallaxBack
+public class DetailActivity extends AppCompatActivity {
+ 。。。
 }
 ```
+- 这样DetailActivity就可以滑动返回了
+
+#高级用法
+如果需要对DetailActivity进行滑动返回的控制，如某些情况不希望滑动，那可以使用以下代码
+
+
+``` java
+@ParallaxBack
+public class DetailActivity extends AppCompatActivity {
+     private void disableBack(){
+         ParallaxHelper.getInstance().getParallaxBackLayout(this).setEnableGesture(false);
+     }
+}
+```
+
+# 版本建议
+ 如果不能获取到application，或者希望兼容4.0以下的版本，建议使用
+
+``` groovy
+compile 'com.github.anzewei:parallaxbacklayout:0.5'
+```
+
 # 更新
-  日期 2017.05.02  版本 0.6
-      修复了某些情况下灰屏的问题
+- 日期 2017.05.16  版本  1.0
+使用更简单的方法实现，不需要继承基类
 
 # License
 
-Copyright 2015 anzewei
+Copyright 2017 anzewei
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
 
