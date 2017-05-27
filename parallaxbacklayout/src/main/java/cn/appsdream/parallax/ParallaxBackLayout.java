@@ -1,4 +1,4 @@
-package com.github.anzewei.parallaxbacklayout;
+package cn.appsdream.parallax;
 
 import android.app.Activity;
 import android.content.Context;
@@ -9,6 +9,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+
 
 public class ParallaxBackLayout extends FrameLayout {
 

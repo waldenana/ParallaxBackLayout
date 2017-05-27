@@ -2,11 +2,11 @@ apply plugin: 'com.android.library'
 
 ext {
     bintrayRepo = 'maven'
-    bintrayName = 'com.github.anzewei'
+    bintrayName = 'cn.appsdream.parallax'
 
-    publishedGroupId = 'com.github.anzewei'
-    libraryName = 'parallaxbacklayout2'
-    artifact = 'parallaxbacklayout2'
+    publishedGroupId = 'cn.appsdream.parallax'
+    libraryName = 'parallaxbacklayout'
+    artifact = 'parallaxbacklayout'
 
     libraryDescription = 'An Android library that help you to finish activity with swipe back gesture and you can get parallax scrolling effect'
 

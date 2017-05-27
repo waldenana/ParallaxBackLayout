@@ -1,4 +1,4 @@
-package com.github.anzewei.parallaxbacklayout;
+package cn.appsdream.parallax;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

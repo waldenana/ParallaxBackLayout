@@ -8,8 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
-import com.github.anzewei.parallaxbacklayout.ParallaxBack;
-import com.github.anzewei.parallaxbacklayout.ParallaxHelper;
+import cn.appsdream.parallax.ParallaxBack;
 
 @ParallaxBack
 public class DetailActivity extends AppCompatActivity {

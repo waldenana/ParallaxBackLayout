@@ -1,20 +1,12 @@
-package com.github.anzewei.parallaxbacklayout;
+package cn.appsdream.parallax;
 
 import android.app.Activity;
 import android.app.Application;
-import android.content.ComponentCallbacks;
-import android.content.res.Configuration;
 import android.graphics.Canvas;
-import android.graphics.Paint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
-
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Stack;
 
 /**
  * Created by anzew on 2017-05-09.
@@ -37,7 +29,6 @@ public class ParallaxHelper implements Application.ActivityLifecycleCallbacks {
 
     @Override
     public void onActivityCreated(final Activity activity, Bundle savedInstanceState) {
-        Log.d(ParallaxHelper.class.getSimpleName(), activity + "onActivityCreated");
         final TraceInfo traceInfo = new TraceInfo();
         mLinkedStack.put(activity, traceInfo);
         traceInfo.mCurrent = activity;
@@ -71,7 +62,6 @@ public class ParallaxHelper implements Application.ActivityLifecycleCallbacks {
 
     @Override
     public void onActivitySaveInstanceState(Activity activity, Bundle outState) {
-        Log.d(ParallaxHelper.class.getSimpleName(), activity + "onActivitySaveInstanceState");
     }
 
     @Override

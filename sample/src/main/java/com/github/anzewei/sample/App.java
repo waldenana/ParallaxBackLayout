@@ -2,7 +2,7 @@ package com.github.anzewei.sample;
 
 import android.app.Application;
 
-import com.github.anzewei.parallaxbacklayout.ParallaxHelper;
+import cn.appsdream.parallax.ParallaxHelper;
 
 /**
  * Created by anzew on 2017-05-09.

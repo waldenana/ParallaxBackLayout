@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.github.anzewei.parallaxbacklayout;
+package cn.appsdream.parallax;
 
 import android.content.Context;
 import android.support.v4.view.MotionEventCompat;
