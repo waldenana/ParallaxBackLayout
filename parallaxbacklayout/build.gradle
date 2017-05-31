@@ -5,8 +5,8 @@ ext {
     bintrayName = 'com.github.anzewei'
 
     publishedGroupId = 'com.github.anzewei'
-    libraryName = 'parallaxbacklayout2'
-    artifact = 'parallaxbacklayout2'
+    libraryName = 'parallaxbacklayout'
+    artifact = 'parallaxbacklayout'
 
     libraryDescription = 'An Android library that help you to finish activity with swipe back gesture and you can get parallax scrolling effect'
 

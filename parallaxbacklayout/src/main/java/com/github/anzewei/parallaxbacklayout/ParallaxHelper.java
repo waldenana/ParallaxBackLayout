@@ -42,10 +42,7 @@ public class ParallaxHelper implements Application.ActivityLifecycleCallbacks {
         mLinkedStack.put(activity, traceInfo);
         traceInfo.mCurrent = activity;
         if (mLinkedStack.size() > 0 && activity.getClass().getAnnotation(ParallaxBack.class) != null) {
-            traceInfo.mBackLayout = new ParallaxBackLayout(activity);
-            traceInfo.mBackLayout.setId(R.id.pllayout);
-            traceInfo.mBackLayout.attachToActivity(activity);
-            traceInfo.mBackLayout.setBackgroundView(new GoBackView(activity));
+            enableParallaxBack(activity);
         }
     }
 
@@ -80,7 +77,25 @@ public class ParallaxHelper implements Application.ActivityLifecycleCallbacks {
         Log.d(ParallaxHelper.class.getSimpleName(), activity + "onActivityDestroyed");
     }
 
-    public ParallaxBackLayout getParallaxBackLayout(Activity activity){
+    public static void disableParallaxBack(Activity activity){
+        ParallaxBackLayout layout =  getParallaxBackLayout(activity);
+        if (layout != null)
+            layout.setEnableGesture(false);
+    }
+
+    public static void enableParallaxBack(Activity activity){
+        ParallaxBackLayout layout =  getParallaxBackLayout(activity);
+        if (layout != null)
+            layout.setEnableGesture(true);
+        else {
+            ParallaxBackLayout backLayout = new ParallaxBackLayout(activity);
+            backLayout.setId(R.id.pllayout);
+            backLayout.attachToActivity(activity);
+            backLayout.setBackgroundView(new GoBackView(activity));
+        }
+    }
+
+    public static ParallaxBackLayout getParallaxBackLayout(Activity activity){
        View view = ((ViewGroup)activity.getWindow().getDecorView()).getChildAt(0);
         if (view instanceof ParallaxBackLayout)
             return (ParallaxBackLayout) view;
@@ -92,7 +107,6 @@ public class ParallaxHelper implements Application.ActivityLifecycleCallbacks {
 
     public static class TraceInfo {
         private Activity mCurrent;
-        private ParallaxBackLayout mBackLayout;
     }
 
     private static class GoBackView implements ParallaxBackLayout.IBackgroundView {
