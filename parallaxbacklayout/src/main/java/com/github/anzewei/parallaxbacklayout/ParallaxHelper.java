@@ -41,9 +41,19 @@ public class ParallaxHelper implements Application.ActivityLifecycleCallbacks {
         final TraceInfo traceInfo = new TraceInfo();
         mLinkedStack.put(activity, traceInfo);
         traceInfo.mCurrent = activity;
-        if (mLinkedStack.size() > 0 && activity.getClass().getAnnotation(ParallaxBack.class) != null) {
+        if (mLinkedStack.size() > 0 && checkAnnotation(activity.getClass())) {
             enableParallaxBack(activity);
         }
+    }
+
+    private boolean checkAnnotation(Class<? extends Activity> c) {
+        Class mc = c;
+        while (Activity.class.isAssignableFrom(mc)) {
+            if (mc.getAnnotation(ParallaxBack.class) != null)
+                return true;
+            mc = mc.getSuperclass();
+        }
+        return false;
     }
 
     @Override
@@ -121,8 +131,10 @@ public class ParallaxHelper implements Application.ActivityLifecycleCallbacks {
 
         @Override
         public void draw(Canvas canvas) {
-            if (mActivityBack != null)
+            if (mActivityBack != null) {
+                mActivityBack.getWindow().getDecorView().requestLayout();
                 mActivityBack.getWindow().getDecorView().draw(canvas);
+            }
         }
 
         @Override

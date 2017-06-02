@@ -15,7 +15,10 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"/>
 
-    <EditText
+    <ToggleButton
+        android:id="@+id/toggle"
+        android:textOn="Enable"
+        android:textOff="Disable"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/txt_content"
