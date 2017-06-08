@@ -19,7 +19,7 @@ Finish an Activity with parallax scrolling effect.
 - Add these lines to your build.gradle
 
 ``` groovy
-compile 'com.github.anzewei:parallaxbacklayout2:1.0'
+compile 'com.github.anzewei:parallaxbacklayout:1.0'
 ``` 
 	
 ## Step 2
