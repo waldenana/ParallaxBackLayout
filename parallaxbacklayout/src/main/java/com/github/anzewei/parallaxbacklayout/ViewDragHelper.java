@@ -139,6 +139,7 @@ public class ViewDragHelper {
     private float mMinVelocity;
 
     private int mEdgeSize;
+    private int mEdgeSizeDefault;
 
     private int mTrackingEdges;
 
@@ -151,6 +152,10 @@ public class ViewDragHelper {
     private boolean mReleaseInProgress;
 
     private final ViewGroup mParentView;
+
+    public int getEdgeSizeDefault() {
+        return mEdgeSizeDefault;
+    }
 
     /**
      * A Callback is used as a communication channel with the ViewDragHelper
@@ -422,6 +427,7 @@ public class ViewDragHelper {
         final ViewConfiguration vc = ViewConfiguration.get(context);
         final float density = context.getResources().getDisplayMetrics().density;
         mEdgeSize = (int) (EDGE_SIZE * density + 0.5f);
+        mEdgeSizeDefault = mEdgeSize;
 
         mTouchSlop = vc.getScaledTouchSlop();
         mMaxVelocity = vc.getScaledMaximumFlingVelocity();
