@@ -12,22 +12,21 @@
         <activity
             android:name=".NormalActivity"
             android:configChanges="orientation"
-            android:label="@string/app_name">
+            android:label="NormalActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity
-            android:name=".DetailActivity"
-            android:configChanges="orientation"
-            android:label="@string/app_name">
+        <activity android:name=".basic.BackExtendsBaseActivity"
+            android:label="BackExtendsBaseActivity">
         </activity>
-        <activity android:name=".basic.BaseActivity">
-        </activity>
-        <activity android:name=".basic.BackExtendsBaseActivity">
-        </activity>
+        <activity android:name=".basic.TopActivity"/>
+        <activity android:name=".basic.LeftActivity"/>
+        <activity android:name=".basic.BottomActivity"/>
+        <activity android:name=".basic.RightActivity"/>
+        <activity android:name=".basic.NoneActivity"/>
     </application>
 
 </manifest>

@@ -9,11 +9,8 @@ import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.support.annotation.IntDef;
 import android.support.v4.view.ViewCompat;
-import android.support.v4.view.WindowInsetsCompat;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.view.WindowInsets;
 import android.widget.FrameLayout;
@@ -324,21 +321,21 @@ public class ParallaxBackLayout extends FrameLayout {
 
     private void translateParallax(Canvas canvas, View child) {
         if (mEdgeFlag == EDGE_LEFT) {
-            int left = (child.getLeft() - child.getWidth()) / 2;
+            int left = (child.getLeft() - getWidth()) / 2;
             canvas.translate(left, 0);
-            canvas.clipRect(0, 0, child.getWidth() - left, child.getBottom());
+            canvas.clipRect(0, 0, left + getWidth(), child.getBottom());
         } else if (mEdgeFlag == EDGE_TOP) {
             int top = (child.getTop() - child.getHeight()) / 2;
             canvas.translate(0, top);
-            canvas.clipRect(0, 0, child.getWidth(), child.getHeight() - top);
+            canvas.clipRect(0, 0, child.getRight(), child.getHeight() + top + getSystemBarSize());
         } else if (mEdgeFlag == EDGE_RIGHT) {
-            int left = (child.getLeft() + child.getWidth()) / 2;
+            int left = (child.getLeft() + child.getWidth() - mInsets.left) / 2;
             canvas.translate(left, 0);
-            canvas.clipRect(left, 0, getWidth(), child.getBottom());
+            canvas.clipRect(left + mInsets.left, 0, getWidth(), child.getBottom());
         } else if (mEdgeFlag == EDGE_BOTTOM) {
-            int top = (child.getTop() + getHeight()) / 2;
+            int top = (child.getBottom()-getSystemBarSize()) / 2;
             canvas.translate(0, top);
-            canvas.clipRect(0, top, child.getWidth(), getHeight());
+            canvas.clipRect(0, top+getSystemBarSize(), child.getRight(), getHeight());
         }
     }
 
@@ -347,15 +344,15 @@ public class ParallaxBackLayout extends FrameLayout {
             int left = (child.getLeft() - child.getWidth()) - mInsets.left;
             canvas.translate(left, 0);
         } else if (mEdgeFlag == EDGE_TOP) {
-            int top = (child.getTop() - child.getHeight()) + getSystemSize();
+            int top = (child.getTop() - child.getHeight()) + getSystemBarSize();
             canvas.translate(0, top);
         } else if (mEdgeFlag == EDGE_RIGHT) {
-            int left = child.getRight();
+            int left = child.getRight() - mInsets.left;
             canvas.translate(left, 0);
         } else if (mEdgeFlag == EDGE_BOTTOM) {
-            int top = child.getBottom() - getSystemSize();
+            int top = child.getBottom() - getSystemBarSize();
             canvas.translate(0, top);
-            canvas.clipRect(0, getSystemSize(), child.getRight(), getHeight());
+            canvas.clipRect(0, getSystemBarSize(), child.getRight(), getHeight());
         }
     }
 
@@ -363,11 +360,11 @@ public class ParallaxBackLayout extends FrameLayout {
         if (mEdgeFlag == EDGE_LEFT) {
             canvas.clipRect(0, 0, child.getLeft(), child.getBottom());
         } else if (mEdgeFlag == EDGE_TOP) {
-            canvas.clipRect(0, 0, child.getWidth(), child.getTop());
+            canvas.clipRect(0, 0, child.getRight(), child.getTop() + getSystemBarSize());
         } else if (mEdgeFlag == EDGE_RIGHT) {
             canvas.clipRect(child.getRight(), 0, getWidth(), child.getBottom());
         } else if (mEdgeFlag == EDGE_BOTTOM) {
-            canvas.clipRect(0, child.getBottom(), child.getWidth(), getHeight());
+            canvas.clipRect(0, child.getBottom(), child.getRight(), getHeight());
         }
     }
 
@@ -387,8 +384,8 @@ public class ParallaxBackLayout extends FrameLayout {
             mShadowLeft.setBounds(child.getLeft(), child.getBottom(),
                     child.getRight(), child.getBottom() + mShadowLeft.getIntrinsicHeight());
         } else if (mEdgeFlag == EDGE_TOP) {
-            mShadowLeft.setBounds(child.getLeft(), child.getTop() - mShadowLeft.getIntrinsicHeight() + getSystemSize(),
-                    child.getRight(), child.getTop() + getSystemSize());
+            mShadowLeft.setBounds(child.getLeft(), child.getTop() - mShadowLeft.getIntrinsicHeight() + getSystemBarSize(),
+                    child.getRight(), child.getTop() + getSystemBarSize());
         }
         mShadowLeft.draw(canvas);
     }
@@ -441,7 +438,7 @@ public class ParallaxBackLayout extends FrameLayout {
         applyWindowInset();
     }
 
-    private int getSystemSize() {
+    private int getSystemBarSize() {
         return mInsets.top;
     }
 
@@ -501,15 +498,15 @@ public class ParallaxBackLayout extends FrameLayout {
         public void onViewPositionChanged(View changedView, int left, int top, int dx, int dy) {
             super.onViewPositionChanged(changedView, left, top, dx, dy);
             if ((mTrackingEdge & EDGE_LEFT) != 0) {
-                mScrollPercent = Math.abs((float) left
+                mScrollPercent = Math.abs((float) (left - mInsets.left)
                         / mContentView.getWidth());
             }
             if ((mTrackingEdge & EDGE_RIGHT) != 0) {
-                mScrollPercent = Math.abs((float) left
+                mScrollPercent = Math.abs((float) (left - mInsets.left)
                         / mContentView.getWidth());
             }
             if ((mTrackingEdge & EDGE_BOTTOM) != 0) {
-                mScrollPercent = Math.abs((float) (top - getSystemSize())
+                mScrollPercent = Math.abs((float) (top - getSystemBarSize())
                         / mContentView.getHeight());
             }
             if ((mTrackingEdge & EDGE_TOP) != 0) {
@@ -532,18 +529,18 @@ public class ParallaxBackLayout extends FrameLayout {
             final int childWidth = releasedChild.getWidth();
             final int childHeight = releasedChild.getHeight();
 
-            int left = 0, top = 0;
+            int left = mInsets.left, top = 0;
             if ((mTrackingEdge & EDGE_LEFT) != 0) {
-                left = xvel >= 0 && mScrollPercent > mScrollThreshold ? childWidth + mInsets.left : 0;
+                left = xvel >= 0 && mScrollPercent > mScrollThreshold ? childWidth + mInsets.left : mInsets.left;
             }
             if ((mTrackingEdge & EDGE_RIGHT) != 0) {
-                left = xvel <= 0 && mScrollPercent > mScrollThreshold ? -childWidth : 0;
+                left = xvel <= 0 && mScrollPercent > mScrollThreshold ? -childWidth + mInsets.left : mInsets.left;
             }
             if ((mTrackingEdge & EDGE_TOP) != 0) {
                 top = yvel >= 0 && mScrollPercent > mScrollThreshold ? childHeight : 0;
             }
             if ((mTrackingEdge & EDGE_BOTTOM) != 0) {
-                top = yvel <= 0 && mScrollPercent > mScrollThreshold ? -childHeight + getSystemSize() : 0;
+                top = yvel <= 0 && mScrollPercent > mScrollThreshold ? -childHeight + getSystemBarSize() : 0;
             }
             mDragHelper.settleCapturedViewAt(left, top);
             invalidate();
@@ -551,11 +548,11 @@ public class ParallaxBackLayout extends FrameLayout {
 
         @Override
         public int clampViewPositionHorizontal(View child, int left, int dx) {
-            int ret = mContentView.getLeft();
+            int ret = mInsets.left;
             if ((mTrackingEdge & EDGE_LEFT) != 0) {
                 ret = Math.min(child.getWidth(), Math.max(left, 0));
             } else if ((mTrackingEdge & EDGE_RIGHT) != 0) {
-                ret = Math.min(0, Math.max(left, -child.getWidth()));
+                ret = Math.min(mInsets.left, Math.max(left, -child.getWidth()));
             } else {
 
             }
