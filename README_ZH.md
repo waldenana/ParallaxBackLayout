@@ -13,7 +13,7 @@
 ## 首先添加引用到Model的build.gradle
 
 ``` groovy
-compile 'com.github.anzewei:parallaxbacklayout2:1.0'
+compile 'com.github.anzewei:parallaxbacklayout:1.0'
 ``` 
 	
 ## 在application中注册ParallaxHelper
