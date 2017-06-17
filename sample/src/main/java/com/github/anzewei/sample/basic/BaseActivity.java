@@ -22,6 +22,7 @@ public class BaseActivity extends AppCompatActivity implements RadioGroup.OnChec
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTitle(getClass().getSimpleName());
         setContentView(R.layout.content_main);
         mTxtContent = (TextView) findViewById(R.id.txt_content);
         mGroupLayout = ((RadioGroup) findViewById(R.id.rgp_layout));

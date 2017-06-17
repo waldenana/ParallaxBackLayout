@@ -3,8 +3,7 @@
 
 Finish an Activity with parallax scrolling effect.
 
-<img width="480" height="847" src="https://github.com/anzewei/ParallaxBackLayout/blob/master/ext/v0.2.gif" />
-
+[![Watch the video](https://github.com/anzewei/ParallaxBackLayout/blob/master/ext/video.png)](https://youtu.be/6da7UZh8MRk)
 # Demo Apk
 
 <a href="https://github.com/anzewei/ParallaxBackLayout/blob/master/ext/demo.apk?raw=true">DOWNLOAD</a>
@@ -19,7 +18,7 @@ Finish an Activity with parallax scrolling effect.
 - Add these lines to your build.gradle
 
 ``` groovy
-compile 'com.github.anzewei:parallaxbacklayout:1.0'
+compile 'com.github.anzewei:parallaxbacklayout:lastversion'
 ``` 
 	
 ## Step 2

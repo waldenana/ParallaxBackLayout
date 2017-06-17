@@ -2,7 +2,7 @@
 [![Download](https://api.bintray.com/packages/anzewei/maven/com.github.anzewei/images/download.svg)](https://bintray.com/anzewei/maven/com.github.anzewei/_latestVersion)
 仿微信的滑动返回Activity（视差滑动）.
 
-<img width="480" height="847" src="https://github.com/anzewei/ParallaxBackLayout/blob/master/ext/v0.2.gif" />
+[![Watch the video](https://github.com/anzewei/ParallaxBackLayout/blob/master/ext/video.png)](https://youtu.be/6da7UZh8MRk)
 
 # Demo Apk
 
@@ -13,7 +13,7 @@
 ## 首先添加引用到Model的build.gradle
 
 ``` groovy
-compile 'com.github.anzewei:parallaxbacklayout:1.0'
+compile 'com.github.anzewei:parallaxbacklayout:lastversion'
 ``` 
 	
 ## 在application中注册ParallaxHelper

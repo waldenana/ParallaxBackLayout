@@ -349,6 +349,7 @@ public class ParallaxBackLayout extends FrameLayout {
         } else if (mEdgeFlag == EDGE_RIGHT) {
             int left = child.getRight() - mInsets.left;
             canvas.translate(left, 0);
+            canvas.clipRect(mInsets.left, 0, getWidth(), getHeight());
         } else if (mEdgeFlag == EDGE_BOTTOM) {
             int top = child.getBottom() - getSystemBarSize();
             canvas.translate(0, top);
