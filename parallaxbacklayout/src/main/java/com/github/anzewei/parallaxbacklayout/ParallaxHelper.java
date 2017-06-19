@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.app.Application;
 import android.graphics.Canvas;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -35,7 +34,6 @@ public class ParallaxHelper implements Application.ActivityLifecycleCallbacks {
 
     @Override
     public void onActivityCreated(final Activity activity, Bundle savedInstanceState) {
-        Log.d(ParallaxHelper.class.getSimpleName(), activity + "onActivityCreated");
         final TraceInfo traceInfo = new TraceInfo();
         mLinkedStack.put(activity, traceInfo);
         traceInfo.mCurrent = activity;
@@ -44,7 +42,7 @@ public class ParallaxHelper implements Application.ActivityLifecycleCallbacks {
         if (mLinkedStack.size() > 0 && parallaxBack != null) {
             ParallaxBackLayout layout = enableParallaxBack(activity);
             layout.setEdgeFlag(parallaxBack.edge().getValue());
-            layout.setLayoutType(parallaxBack.layout().getValue());
+            layout.setLayoutType(parallaxBack.layout().getValue(),null);
         }
     }
 
@@ -82,13 +80,11 @@ public class ParallaxHelper implements Application.ActivityLifecycleCallbacks {
 
     @Override
     public void onActivitySaveInstanceState(Activity activity, Bundle outState) {
-        Log.d(ParallaxHelper.class.getSimpleName(), activity + "onActivitySaveInstanceState");
     }
 
     @Override
     public void onActivityDestroyed(Activity activity) {
         mLinkedStack.remove(activity);
-        Log.d(ParallaxHelper.class.getSimpleName(), activity + "onActivityDestroyed");
     }
 
     /**
@@ -154,7 +150,7 @@ public class ParallaxHelper implements Application.ActivityLifecycleCallbacks {
         private Activity mCurrent;
     }
 
-    private static class GoBackView implements ParallaxBackLayout.IBackgroundView {
+    public static class GoBackView implements ParallaxBackLayout.IBackgroundView {
 
         private Activity mActivity;
         private Activity mActivityBack;

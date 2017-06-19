@@ -630,11 +630,11 @@ public class ViewDragHelper {
      * @return true if animation should continue through
      * {@link #continueSettling(boolean)} calls
      */
-    public boolean smoothSlideViewTo(View child, int finalLeft, int finalTop) {
+    public boolean smoothSlideViewTo(View child, int finalLeft, int finalTop,int duration) {
         mCapturedView = child;
         mActivePointerId = INVALID_POINTER;
 
-        return forceSettleCapturedViewAt(finalLeft, finalTop, 0, 0);
+        return forceSettleCapturedViewAt(finalLeft, finalTop, 0, 0,duration);
     }
 
     /**
@@ -658,7 +658,7 @@ public class ViewDragHelper {
 
         return forceSettleCapturedViewAt(finalLeft, finalTop,
                 (int) VelocityTrackerCompat.getXVelocity(mVelocityTracker, mActivePointerId),
-                (int) VelocityTrackerCompat.getYVelocity(mVelocityTracker, mActivePointerId));
+                (int) VelocityTrackerCompat.getYVelocity(mVelocityTracker, mActivePointerId),0);
     }
 
     /**
@@ -671,7 +671,7 @@ public class ViewDragHelper {
      * @return true if animation should continue through
      * {@link #continueSettling(boolean)} calls
      */
-    private boolean forceSettleCapturedViewAt(int finalLeft, int finalTop, int xvel, int yvel) {
+    private boolean forceSettleCapturedViewAt(int finalLeft, int finalTop, int xvel, int yvel, int duration) {
         final int startLeft = mCapturedView.getLeft();
         final int startTop = mCapturedView.getTop();
         final int dx = finalLeft - startLeft;
@@ -683,8 +683,8 @@ public class ViewDragHelper {
             setDragState(STATE_IDLE);
             return false;
         }
-
-        final int duration = computeSettleDuration(mCapturedView, dx, dy, xvel, yvel);
+        if (duration == 0)
+            duration = computeSettleDuration(mCapturedView, dx, dy, xvel, yvel);
         mScroller.startScroll(startLeft, startTop, dx, dy, duration);
 
         setDragState(STATE_SETTLING);
@@ -1573,13 +1573,13 @@ public class ViewDragHelper {
         int result = 0;
 
         if (x < mParentView.getLeft() + mEdgeSize)
-            result = EDGE_LEFT;
+            result |= EDGE_LEFT;
         if (y < mParentView.getTop() + mEdgeSize)
-            result = EDGE_TOP;
+            result |= EDGE_TOP;
         if (x > mParentView.getRight() - mEdgeSize)
-            result = EDGE_RIGHT;
+            result |= EDGE_RIGHT;
         if (y > mParentView.getBottom() - mEdgeSize)
-            result = EDGE_BOTTOM;
+            result |= EDGE_BOTTOM;
 
         return result;
     }

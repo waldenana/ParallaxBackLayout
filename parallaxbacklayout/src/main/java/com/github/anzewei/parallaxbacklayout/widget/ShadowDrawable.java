@@ -9,6 +9,9 @@ import android.graphics.drawable.GradientDrawable;
  * @since ${VERSION}
  */
 
-public class ShawdowDrawable extends GradientDrawable {
+public class ShadowDrawable extends GradientDrawable {
 
+    public ShadowDrawable(Orientation orientation, int[] colors) {
+        super(orientation, colors);
+    }
 }

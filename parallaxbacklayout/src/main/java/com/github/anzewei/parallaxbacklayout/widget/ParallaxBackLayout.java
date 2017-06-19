@@ -5,10 +5,12 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.support.annotation.IntDef;
 import android.support.v4.view.ViewCompat;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +18,10 @@ import android.view.WindowInsets;
 import android.widget.FrameLayout;
 
 import com.github.anzewei.parallaxbacklayout.ViewDragHelper;
+import com.github.anzewei.parallaxbacklayout.transform.CoverTransform;
+import com.github.anzewei.parallaxbacklayout.transform.ITransform;
+import com.github.anzewei.parallaxbacklayout.transform.ParallaxTransform;
+import com.github.anzewei.parallaxbacklayout.transform.SlideTransform;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -28,9 +34,9 @@ import static com.github.anzewei.parallaxbacklayout.ViewDragHelper.EDGE_TOP;
  * The type Parallax back layout.
  */
 public class ParallaxBackLayout extends FrameLayout {
-    private Rect mInsets = new Rect();
 
-    @IntDef({LAYOUT_COVER, LAYOUT_PARALLAX, LAYOUT_SLIDE})
+    //region cont
+    @IntDef({LAYOUT_COVER, LAYOUT_PARALLAX, LAYOUT_SLIDE, LAYOUT_CUSTOM})
     @Retention(RetentionPolicy.SOURCE)
     private @interface LayoutType {
     }
@@ -40,6 +46,11 @@ public class ParallaxBackLayout extends FrameLayout {
     private @interface Edge {
     }
 
+    @IntDef({EDGE_MODE_DEFAULT, EDGE_MODE_FULL})
+    @Retention(RetentionPolicy.SOURCE)
+    private @interface EdgeMode {
+    }
+
     private static final int DEFAULT_SCRIM_COLOR = 0x99000000;
 
     private static final int FULL_ALPHA = 255;
@@ -47,7 +58,7 @@ public class ParallaxBackLayout extends FrameLayout {
     /**
      * Default threshold of scroll
      */
-    private static final float DEFAULT_SCROLL_THRESHOLD = 0.3f;
+    private static final float DEFAULT_SCROLL_THRESHOLD = 0.999f;
 
     private static final int OVERSCROLL_DISTANCE = 0;
     private static final int EDGE_LEFT = ViewDragHelper.EDGE_LEFT;
@@ -64,6 +75,12 @@ public class ParallaxBackLayout extends FrameLayout {
      * The constant LAYOUT_SLIDE.
      */
     public static final int LAYOUT_SLIDE = 2;
+    public static final int LAYOUT_CUSTOM = -1;
+    public static final int EDGE_MODE_FULL = 0;
+    public static final int EDGE_MODE_DEFAULT = 1;
+    //endregion
+
+    //region field
     /**
      * Threshold of scroll, we will close the activity, when scrollPercent over
      * this value;
@@ -71,6 +88,7 @@ public class ParallaxBackLayout extends FrameLayout {
     private float mScrollThreshold = DEFAULT_SCROLL_THRESHOLD;
 
     private Activity mSwipeHelper;
+    private Rect mInsets = new Rect();
 
     private boolean mEnable = true;
 
@@ -78,16 +96,17 @@ public class ParallaxBackLayout extends FrameLayout {
     private View mContentView;
 
     private ViewDragHelper mDragHelper;
-    private ViewDragCallback mViewDragCallback;
-
+    private ParallaxSlideCallback mSlideCallback;
+    private ITransform mTransform;
     private int mContentLeft;
+    private int mEdgeMode = EDGE_MODE_DEFAULT;
 
     private int mContentTop;
     private int mLayoutType = LAYOUT_PARALLAX;
 
     private IBackgroundView mBackgroundView;
     //    private String mThumbFile;
-    private GradientDrawable mShadowLeft;
+    private Drawable mShadowLeft;
 
 //    private Bitmap mSecondBitmap;
 //    private Paint mPaintCache;
@@ -103,6 +122,9 @@ public class ParallaxBackLayout extends FrameLayout {
     private
     @Edge
     int mEdgeFlag = -1;
+    //endregion
+
+    //region super method
 
     /**
      * Instantiates a new Parallax back layout.
@@ -111,7 +133,7 @@ public class ParallaxBackLayout extends FrameLayout {
      */
     public ParallaxBackLayout(Context context) {
         super(context);
-        mDragHelper = ViewDragHelper.create(this, mViewDragCallback = new ViewDragCallback());
+        mDragHelper = ViewDragHelper.create(this, new ViewDragCallback());
         setEdgeFlag(EDGE_LEFT);
     }
 
@@ -127,112 +149,6 @@ public class ParallaxBackLayout extends FrameLayout {
         return super.onApplyWindowInsets(insets);
     }
 
-    /**
-     * Set up contentView which will be moved by user gesture
-     *
-     * @param view
-     */
-    private void setContentView(View view) {
-        mContentView = view;
-    }
-
-    /**
-     * Gets content view.
-     *
-     * @return the content view
-     */
-    public View getContentView() {
-        return mContentView;
-    }
-
-    /**
-     * Sets enable gesture.
-     *
-     * @param enable the enable
-     */
-    public void setEnableGesture(boolean enable) {
-        mEnable = enable;
-    }
-
-
-    /**
-     * Set scroll threshold, we will close the activity, when scrollPercent over
-     * this value
-     *
-     * @param threshold the threshold
-     */
-    public void setScrollThresHold(float threshold) {
-        if (threshold >= 1.0f || threshold <= 0) {
-            throw new IllegalArgumentException("Threshold value should be between 0 and 1.0");
-        }
-        mScrollThreshold = threshold;
-    }
-
-
-    /**
-     * attach to activity
-     *
-     * @param activity the activity
-     */
-    public void attachToActivity(Activity activity) {
-        mSwipeHelper = activity;
-
-        ViewGroup decor = (ViewGroup) activity.getWindow().getDecorView();
-        ViewGroup decorChild = (ViewGroup) decor.getChildAt(0);
-        decor.removeView(decorChild);
-        addView(decorChild, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-        setContentView(decorChild);
-        decor.addView(this);
-    }
-
-    private void applyWindowInset() {
-        if (mInsets == null)
-            return;
-        if (mEdgeFlag == EDGE_TOP)
-            mDragHelper.setEdgeSize(mInsets.top + mDragHelper.getEdgeSizeDefault());
-        else if (mEdgeFlag == EDGE_BOTTOM) {
-            mDragHelper.setEdgeSize(mInsets.bottom + mDragHelper.getEdgeSizeDefault());
-        } else if (mEdgeFlag == ViewDragHelper.EDGE_LEFT) {
-            mDragHelper.setEdgeSize(mDragHelper.getEdgeSizeDefault() + mInsets.left);
-        } else
-            mDragHelper.setEdgeSize(mDragHelper.getEdgeSizeDefault() + mInsets.right);
-    }
-
-    /**
-     * Scroll out contentView and finish the activity
-     */
-    public void scrollToFinishActivity() {
-//        if (!mEnable || mThumbFile == null) {
-//            mSwipeHelper.getActivity().finish();
-//            return;
-//        }
-//        if (!new File(mThumbFile).exists()){
-//            return;
-//        }
-        final int childWidth = mContentView.getWidth();
-        int left = 0, top = 0;
-        left = childWidth;
-        mTrackingEdge = ViewDragHelper.EDGE_LEFT;
-
-        mDragHelper.smoothSlideViewTo(mContentView, left, top);
-        invalidate();
-    }
-//
-//
-//    @Override
-//    protected Parcelable onSaveInstanceState() {
-//        Parcelable superState = super.onSaveInstanceState();
-//        SavedState ss = new SavedState(superState);
-//        ss.filename = mThumbFile;
-//        return ss;
-//    }
-//
-//    @Override
-//    protected void onRestoreInstanceState(Parcelable state) {
-//        SavedState ss = (SavedState) state;
-//        super.onRestoreInstanceState(ss.getSuperState());
-//        mThumbFile = ss.filename;
-//    }
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent event) {
@@ -263,6 +179,7 @@ public class ParallaxBackLayout extends FrameLayout {
         if (mContentView != null) {
             int cleft = mContentLeft;
             int ctop = mContentTop;
+            Log.d(View.VIEW_LOG_TAG, "left = " + left + " top = " + top);
             ViewGroup.LayoutParams params = mContentView.getLayoutParams();
             if (params instanceof MarginLayoutParams) {
                 cleft += ((MarginLayoutParams) params).leftMargin;
@@ -291,6 +208,7 @@ public class ParallaxBackLayout extends FrameLayout {
 
     @Override
     protected boolean drawChild(Canvas canvas, View child, long drawingTime) {
+        Log.d(VIEW_LOG_TAG, "drawChild");
         final boolean drawContent = child == mContentView;
         if (mEnable)
             drawThumb(canvas, child);
@@ -301,6 +219,34 @@ public class ParallaxBackLayout extends FrameLayout {
         }
         return ret;
     }
+    //endregion
+
+    //region private method
+
+    /**
+     * Set up contentView which will be moved by user gesture
+     *
+     * @param view
+     */
+    private void setContentView(View view) {
+        mContentView = view;
+    }
+
+    private void applyWindowInset() {
+        if (mInsets == null)
+            return;
+        if (mEdgeMode == EDGE_MODE_FULL) {
+            mDragHelper.setEdgeSize(Math.max(getWidth(), getHeight()));
+        } else if (mEdgeFlag == EDGE_TOP)
+            mDragHelper.setEdgeSize(mInsets.top + mDragHelper.getEdgeSizeDefault());
+        else if (mEdgeFlag == EDGE_BOTTOM) {
+            mDragHelper.setEdgeSize(mInsets.bottom + mDragHelper.getEdgeSizeDefault());
+        } else if (mEdgeFlag == ViewDragHelper.EDGE_LEFT) {
+            mDragHelper.setEdgeSize(mDragHelper.getEdgeSizeDefault() + mInsets.left);
+        } else
+            mDragHelper.setEdgeSize(mDragHelper.getEdgeSizeDefault() + mInsets.right);
+    }
+
 
     /**
      *
@@ -309,64 +255,10 @@ public class ParallaxBackLayout extends FrameLayout {
         if (mContentLeft == 0 && mContentTop == 0)
             return;
         int store = canvas.save();
-        if (mLayoutType == LAYOUT_PARALLAX)
-            translateParallax(canvas, child);
-        else if (mLayoutType == LAYOUT_SLIDE)
-            translateSlide(canvas, child);
-        else translateCover(canvas, child);
+        mTransform.transform(canvas, this, child);
         mBackgroundView.draw(canvas);
 
         canvas.restoreToCount(store);
-    }
-
-    private void translateParallax(Canvas canvas, View child) {
-        if (mEdgeFlag == EDGE_LEFT) {
-            int left = (child.getLeft() - getWidth()) / 2;
-            canvas.translate(left, 0);
-            canvas.clipRect(0, 0, left + getWidth(), child.getBottom());
-        } else if (mEdgeFlag == EDGE_TOP) {
-            int top = (child.getTop() - child.getHeight()) / 2;
-            canvas.translate(0, top);
-            canvas.clipRect(0, 0, child.getRight(), child.getHeight() + top + getSystemBarSize());
-        } else if (mEdgeFlag == EDGE_RIGHT) {
-            int left = (child.getLeft() + child.getWidth() - mInsets.left) / 2;
-            canvas.translate(left, 0);
-            canvas.clipRect(left + mInsets.left, 0, getWidth(), child.getBottom());
-        } else if (mEdgeFlag == EDGE_BOTTOM) {
-            int top = (child.getBottom()-getSystemBarSize()) / 2;
-            canvas.translate(0, top);
-            canvas.clipRect(0, top+getSystemBarSize(), child.getRight(), getHeight());
-        }
-    }
-
-    private void translateSlide(Canvas canvas, View child) {
-        if (mEdgeFlag == EDGE_LEFT) {
-            int left = (child.getLeft() - child.getWidth()) - mInsets.left;
-            canvas.translate(left, 0);
-        } else if (mEdgeFlag == EDGE_TOP) {
-            int top = (child.getTop() - child.getHeight()) + getSystemBarSize();
-            canvas.translate(0, top);
-        } else if (mEdgeFlag == EDGE_RIGHT) {
-            int left = child.getRight() - mInsets.left;
-            canvas.translate(left, 0);
-            canvas.clipRect(mInsets.left, 0, getWidth(), getHeight());
-        } else if (mEdgeFlag == EDGE_BOTTOM) {
-            int top = child.getBottom() - getSystemBarSize();
-            canvas.translate(0, top);
-            canvas.clipRect(0, getSystemBarSize(), child.getRight(), getHeight());
-        }
-    }
-
-    private void translateCover(Canvas canvas, View child) {
-        if (mEdgeFlag == EDGE_LEFT) {
-            canvas.clipRect(0, 0, child.getLeft(), child.getBottom());
-        } else if (mEdgeFlag == EDGE_TOP) {
-            canvas.clipRect(0, 0, child.getRight(), child.getTop() + getSystemBarSize());
-        } else if (mEdgeFlag == EDGE_RIGHT) {
-            canvas.clipRect(child.getRight(), 0, getWidth(), child.getBottom());
-        } else if (mEdgeFlag == EDGE_BOTTOM) {
-            canvas.clipRect(0, child.getBottom(), child.getRight(), getHeight());
-        }
     }
 
     /**
@@ -385,10 +277,112 @@ public class ParallaxBackLayout extends FrameLayout {
             mShadowLeft.setBounds(child.getLeft(), child.getBottom(),
                     child.getRight(), child.getBottom() + mShadowLeft.getIntrinsicHeight());
         } else if (mEdgeFlag == EDGE_TOP) {
-            mShadowLeft.setBounds(child.getLeft(), child.getTop() - mShadowLeft.getIntrinsicHeight() + getSystemBarSize(),
-                    child.getRight(), child.getTop() + getSystemBarSize());
+            mShadowLeft.setBounds(child.getLeft(), child.getTop() - mShadowLeft.getIntrinsicHeight() + getSystemTop(),
+                    child.getRight(), child.getTop() + getSystemTop());
         }
         mShadowLeft.draw(canvas);
+    }
+
+    //endregion
+
+    //region Public Method
+
+    /**
+     * Sets enable gesture.
+     *
+     * @param enable the enable
+     */
+    public void setEnableGesture(boolean enable) {
+        mEnable = enable;
+    }
+
+    /**
+     * set slide callback
+     * @param slideCallback callback
+     */
+    public void setSlideCallback(ParallaxSlideCallback slideCallback) {
+        mSlideCallback = slideCallback;
+    }
+    /**
+     * Set scroll threshold, we will close the activity, when scrollPercent over
+     * this value
+     *
+     * @param threshold the threshold
+     */
+    public void setScrollThresHold(float threshold) {
+        if (threshold >= 1.0f || threshold <= 0) {
+            throw new IllegalArgumentException("Threshold value should be between 0 and 1.0");
+        }
+        mScrollThreshold = threshold;
+    }
+
+    /**
+     * attach to activity
+     *
+     * @param activity the activity
+     */
+    public void attachToActivity(Activity activity) {
+        mSwipeHelper = activity;
+
+        ViewGroup decor = (ViewGroup) activity.getWindow().getDecorView();
+        ViewGroup decorChild = (ViewGroup) decor.getChildAt(0);
+        decor.removeView(decorChild);
+        addView(decorChild, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        setContentView(decorChild);
+        decor.addView(this);
+    }
+
+    /**
+     * set the slide mode fullscreen or default
+     *
+     * @param mode
+     */
+    public void setEdgeMode(@EdgeMode int mode) {
+        mEdgeMode = mode;
+        applyWindowInset();
+    }
+
+    /**
+     * Scroll out contentView and finish the activity
+     *
+     * @param duration default 0
+     */
+    public boolean scrollToFinishActivity(int duration) {
+        if (!mEnable || !mBackgroundView.canGoBack()) {
+            return false;
+        }
+        final int childWidth = getWidth();
+        int left = 0, top = 0;
+        mTrackingEdge = mEdgeFlag;
+        switch (mTrackingEdge) {
+            case EDGE_LEFT:
+                left = childWidth;
+                break;
+            case EDGE_BOTTOM:
+                top = -getHeight();
+                break;
+            case EDGE_RIGHT:
+                left = -getWidth();
+                break;
+            case EDGE_TOP:
+                top = getHeight();
+                break;
+        }
+        if (mDragHelper.smoothSlideViewTo(mContentView, left, top, duration)) {
+            ViewCompat.postInvalidateOnAnimation(this);
+            postInvalidate();
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * shadow drawable
+     *
+     * @param drawable
+     */
+    public void setShadowDrawable(Drawable drawable) {
+        mShadowLeft = drawable;
     }
 
     /**
@@ -400,9 +394,7 @@ public class ParallaxBackLayout extends FrameLayout {
         mBackgroundView = backgroundView;
     }
 
-    public
-    @Edge
-    int getEdgeFlag() {
+    public int getEdgeFlag() {
         return mEdgeFlag;
     }
 
@@ -416,6 +408,7 @@ public class ParallaxBackLayout extends FrameLayout {
         if (mEdgeFlag == edgeFlag)
             return;
         mEdgeFlag = edgeFlag;
+        mDragHelper.setEdgeTrackingEnabled(edgeFlag);
         GradientDrawable.Orientation orientation = GradientDrawable.Orientation.LEFT_RIGHT;
         if (edgeFlag == EDGE_LEFT)
             orientation = GradientDrawable.Orientation.RIGHT_LEFT;
@@ -429,23 +422,26 @@ public class ParallaxBackLayout extends FrameLayout {
             mShadowLeft = null;
         }
         if (mShadowLeft == null) {
-            int colors[] = {0x99000000, 0x11000000, 0x00000000};
-            mShadowLeft = new GradientDrawable(orientation, colors);
-            mShadowLeft.setGradientRadius(90);
-            mShadowLeft.setSize(50, 50);
-        } else {
-            mShadowLeft.setOrientation(orientation);
+            int colors[] = {0x66000000, 0x11000000, 0x00000000};
+            ShadowDrawable drawable = new ShadowDrawable(orientation, colors);
+            drawable.setGradientRadius(90);
+            drawable.setSize(50, 50);
+            mShadowLeft = drawable;
+        } else if (mShadowLeft instanceof ShadowDrawable) {
+            ((ShadowDrawable) mShadowLeft).setOrientation(orientation);
         }
         applyWindowInset();
     }
 
-    private int getSystemBarSize() {
+    public int getSystemTop() {
         return mInsets.top;
     }
 
-    public
-    @LayoutType
-    int getLayoutType() {
+    public int getSystemLeft() {
+        return mInsets.left;
+    }
+
+    public int getLayoutType() {
         return mLayoutType;
     }
 
@@ -454,16 +450,29 @@ public class ParallaxBackLayout extends FrameLayout {
      *
      * @param layoutType the layout type
      */
-    public void setLayoutType(@LayoutType int layoutType) {
+    public void setLayoutType(@LayoutType int layoutType, ITransform transform) {
         mLayoutType = layoutType;
+        switch (layoutType) {
+            case LAYOUT_CUSTOM:
+                assert transform != null;
+                mTransform = transform;
+                break;
+            case LAYOUT_COVER:
+                mTransform = new CoverTransform();
+                break;
+            case LAYOUT_PARALLAX:
+                mTransform = new ParallaxTransform();
+                break;
+            case LAYOUT_SLIDE:
+                mTransform = new SlideTransform();
+                break;
+        }
     }
-//
-//    public File getCacheFile() {
-//        File file = getContext().getCacheDir();
-//        File bmpFile = new File(file, String.valueOf(System.identityHashCode(this)));
-//        return bmpFile;
-//    }
 
+
+    //endregion
+
+    //region class
 
     private class ViewDragCallback extends ViewDragHelper.Callback {
 
@@ -507,7 +516,7 @@ public class ParallaxBackLayout extends FrameLayout {
                         / mContentView.getWidth());
             }
             if ((mTrackingEdge & EDGE_BOTTOM) != 0) {
-                mScrollPercent = Math.abs((float) (top - getSystemBarSize())
+                mScrollPercent = Math.abs((float) (top - getSystemTop())
                         / mContentView.getHeight());
             }
             if ((mTrackingEdge & EDGE_TOP) != 0) {
@@ -517,7 +526,9 @@ public class ParallaxBackLayout extends FrameLayout {
             mContentLeft = left;
             mContentTop = top;
             invalidate();
-            if (mScrollPercent >= 0.999) {
+            if (mSlideCallback != null)
+                mSlideCallback.onPositionChanged(mScrollPercent);
+            if (mScrollPercent >= mScrollThreshold) {
                 if (!mSwipeHelper.isFinishing()) {
                     mSwipeHelper.finish();
                     mSwipeHelper.overridePendingTransition(0, 0);
@@ -541,10 +552,17 @@ public class ParallaxBackLayout extends FrameLayout {
                 top = yvel >= 0 && mScrollPercent > mScrollThreshold ? childHeight : 0;
             }
             if ((mTrackingEdge & EDGE_BOTTOM) != 0) {
-                top = yvel <= 0 && mScrollPercent > mScrollThreshold ? -childHeight + getSystemBarSize() : 0;
+                top = yvel <= 0 && mScrollPercent > mScrollThreshold ? -childHeight + getSystemTop() : 0;
             }
             mDragHelper.settleCapturedViewAt(left, top);
             invalidate();
+        }
+
+        @Override
+        public void onViewDragStateChanged(int state) {
+            super.onViewDragStateChanged(state);
+            if (mSlideCallback != null)
+                mSlideCallback.onStateChanged(state);
         }
 
         @Override
@@ -573,7 +591,6 @@ public class ParallaxBackLayout extends FrameLayout {
 
     }
 
-
     /**
      * The interface Background view.
      */
@@ -592,4 +609,12 @@ public class ParallaxBackLayout extends FrameLayout {
          */
         boolean canGoBack();
     }
+
+    public interface ParallaxSlideCallback {
+        void onStateChanged(int state);
+
+        void onPositionChanged(float percent);
+    }
+    //endregion
+
 }

@@ -16,16 +16,16 @@ import com.github.anzewei.parallaxbacklayout.widget.ParallaxBackLayout;
 import com.github.anzewei.sample.R;
 
 public class BaseActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener {
-    private TextView mTxtContent;
     private RadioGroup mGroupLayout;
+    private RadioGroup mGroupEdge;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTitle(getClass().getSimpleName());
         setContentView(R.layout.content_main);
-        mTxtContent = (TextView) findViewById(R.id.txt_content);
         mGroupLayout = ((RadioGroup) findViewById(R.id.rgp_layout));
+        mGroupEdge = ((RadioGroup) findViewById(R.id.rgp_edge_size));
         RadioGroup radioGroup = ((RadioGroup) findViewById(R.id.rgp_orientation));
 
         ParallaxBackLayout parallaxBackLayout = ParallaxHelper.getParallaxBackLayout(this);
@@ -60,6 +60,7 @@ public class BaseActivity extends AppCompatActivity implements RadioGroup.OnChec
 
         } else {
             setChildEnable(mGroupLayout,false);
+            setChildEnable(mGroupEdge,false);
             radioGroup.check(R.id.radio_none);
         }
 
@@ -72,40 +73,56 @@ public class BaseActivity extends AppCompatActivity implements RadioGroup.OnChec
     public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
         switch (checkedId) {
             case R.id.radio_bottom:
-                ParallaxBackLayout layout = ParallaxHelper.getParallaxBackLayout(this, true);
-                layout.setEdgeFlag(ViewDragHelper.EDGE_BOTTOM);
-                layout.setEnableGesture(true);
+                setEdgeFlag(ViewDragHelper.EDGE_BOTTOM);
                 break;
             case R.id.radio_left:
-                layout = ParallaxHelper.getParallaxBackLayout(this, true);
-                layout.setEdgeFlag(ViewDragHelper.EDGE_LEFT);
-                layout.setEnableGesture(true);
+                setEdgeFlag(ViewDragHelper.EDGE_LEFT);
                 break;
             case R.id.radio_top:
-                layout = ParallaxHelper.getParallaxBackLayout(this, true);
-                layout.setEdgeFlag(ViewDragHelper.EDGE_TOP);
-                layout.setEnableGesture(true);
+                setEdgeFlag(ViewDragHelper.EDGE_TOP);
                 break;
             case R.id.radio_right:
-                layout = ParallaxHelper.getParallaxBackLayout(this, true);
-                layout.setEdgeFlag(ViewDragHelper.EDGE_RIGHT);
-                layout.setEnableGesture(true);
+                setEdgeFlag(ViewDragHelper.EDGE_RIGHT);
                 break;
             case R.id.radio_none:
                 ParallaxHelper.disableParallaxBack(this);
                 setChildEnable(mGroupLayout,false);
+                setChildEnable(mGroupEdge,false);
                 break;
             case R.id.radio_cover:
-                ParallaxHelper.getParallaxBackLayout(this, true).setLayoutType(ParallaxBackLayout.LAYOUT_COVER);
+                ParallaxHelper.getParallaxBackLayout(this, true).setLayoutType(ParallaxBackLayout.LAYOUT_COVER,null);
                 break;
             case R.id.radio_parallax:
-                ParallaxHelper.getParallaxBackLayout(this, true).setLayoutType(ParallaxBackLayout.LAYOUT_PARALLAX);
+                ParallaxHelper.getParallaxBackLayout(this, true).setLayoutType(ParallaxBackLayout.LAYOUT_PARALLAX,null);
                 break;
             case R.id.radio_slide:
-                ParallaxHelper.getParallaxBackLayout(this, true).setLayoutType(ParallaxBackLayout.LAYOUT_SLIDE);
+                ParallaxHelper.getParallaxBackLayout(this, true).setLayoutType(ParallaxBackLayout.LAYOUT_SLIDE,null);
+                break;
+            case R.id.radio_default:
+                ParallaxHelper.getParallaxBackLayout(this, true).setEdgeMode(ParallaxBackLayout.EDGE_MODE_DEFAULT);
+                break;
+            case R.id.radio_full:
+                ParallaxHelper.getParallaxBackLayout(this, true).setEdgeMode(ParallaxBackLayout.EDGE_MODE_FULL);
                 break;
         }
     }
+
+    private void setEdgeFlag(int edgeFlag){
+        ParallaxBackLayout layout = ParallaxHelper.getParallaxBackLayout(this, true);
+        layout.setEdgeFlag(edgeFlag);
+        layout.setEnableGesture(true);
+        setChildEnable(mGroupLayout,true);
+        setChildEnable(mGroupEdge,true);
+    }
+
+    @Override
+    public void onBackPressed() {
+        ParallaxBackLayout layout = ParallaxHelper.getParallaxBackLayout(this,false);
+        if (layout!= null){
+            layout.scrollToFinishActivity(0);
+        }else super.onBackPressed();
+    }
+
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_top:

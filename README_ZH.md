@@ -32,6 +32,7 @@ public class DetailActivity extends AppCompatActivity {
 - 这样DetailActivity就可以滑动返回了
 
 #高级用法
+##控制返回
 如果需要对DetailActivity进行滑动返回的控制，如某些情况不希望滑动，那可以使用以下代码
 
 
@@ -43,6 +44,19 @@ public class DetailActivity extends AppCompatActivity {
      }
 }
 ```
+##更多api
+- setShadowDrawable  
+   设置阴影
+- setEdgeFlag  
+  设置滑动方向
+- setLayoutType  
+   设置切换方式
+- setSlideCallback  
+  设置滑动回调
+- setScrollThresHold   
+  滑动比例超过设置值以后会finish当前activity
+- setBackgroundView   
+  设置上级view的绘制方式，可继承自GoBackView，在draw方法中做特殊处理
 
 # 版本建议
  如果不能获取到application，或者希望兼容4.0以下的版本，建议使用
@@ -52,6 +66,13 @@ compile 'com.github.anzewei:parallaxbacklayout:0.5'
 ```
 
 # 更新
+- 日期 2017.06.19  版本  1.1.2
+提供更多接口
+新增自定义切换样式
+新增自定义阴影
+- 日期 2017.06.17  版本  1.1.1
+新增多种滑动方向，上下左右都支持；
+新增切换样式，视差 、覆盖 、无视差
 - 日期 2017.05.16  版本  1.0
 使用更简单的方法实现，不需要继承基类
 

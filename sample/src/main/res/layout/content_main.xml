@@ -13,16 +13,9 @@
         android:layout_width="match_parent"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/txt_content"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"/>
-
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_below="@+id/txt_content"
             android:layout_marginTop="8dp"
             android:background="#cccccc"/>
 
@@ -30,11 +23,11 @@
             android:id="@+id/txt_orientation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/txt_content"
             android:layout_marginTop="16dp"
             android:text="Slide Orientation"/>
 
         <RadioGroup
+            android:orientation="horizontal"
             android:id="@+id/rgp_orientation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -45,31 +38,31 @@
                 android:id="@+id/radio_left"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Left Back Enable"/>
+                android:text="Left"/>
 
             <RadioButton
                 android:id="@+id/radio_top"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Top Back Enable"/>
+                android:text="Top"/>
 
             <RadioButton
                 android:id="@+id/radio_right"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Right Back Enable"/>
+                android:text="Right"/>
 
             <RadioButton
                 android:id="@+id/radio_bottom"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Bottom Back Enable"/>
+                android:text="Bottom"/>
 
             <RadioButton
                 android:id="@+id/radio_none"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Disable Slide Back"/>
+                android:text="Disable"/>
         </RadioGroup>
 
         <View
@@ -113,7 +106,6 @@
                 android:layout_height="wrap_content"
                 android:text="Cover"/>
         </RadioGroup>
-
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
@@ -122,10 +114,48 @@
             android:background="#cccccc"/>
 
         <TextView
-            android:id="@+id/txt_activity"
+            android:id="@+id/txt_edge_size"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/rgp_layout"
+            android:layout_marginTop="16dp"
+            android:text="Edge mode"/>
+
+        <RadioGroup
+            android:id="@+id/rgp_edge_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_edge_size"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:checked="true"
+                android:id="@+id/radio_default"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Edge"/>
+
+            <RadioButton
+                android:id="@+id/radio_full"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Full Screen"/>
+
+        </RadioGroup>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/rgp_edge_size"
+            android:layout_marginTop="8dp"
+            android:background="#cccccc"/>
+
+        <TextView
+            android:id="@+id/txt_activity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rgp_edge_size"
             android:layout_marginTop="16dp"
             android:text="Start Activity"/>
 
