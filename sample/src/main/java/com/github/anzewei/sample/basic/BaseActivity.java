@@ -65,6 +65,7 @@ public class BaseActivity extends AppCompatActivity implements RadioGroup.OnChec
         }
 
         mGroupLayout.setOnCheckedChangeListener(this);
+        mGroupEdge.setOnCheckedChangeListener(this);
         radioGroup.setOnCheckedChangeListener(this);
 
     }

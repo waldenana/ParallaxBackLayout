@@ -58,7 +58,7 @@ public class ParallaxBackLayout extends FrameLayout {
     /**
      * Default threshold of scroll
      */
-    private static final float DEFAULT_SCROLL_THRESHOLD = 0.999f;
+    private static final float DEFAULT_SCROLL_THRESHOLD = 0.5f;
 
     private static final int OVERSCROLL_DISTANCE = 0;
     private static final int EDGE_LEFT = ViewDragHelper.EDGE_LEFT;
@@ -528,7 +528,7 @@ public class ParallaxBackLayout extends FrameLayout {
             invalidate();
             if (mSlideCallback != null)
                 mSlideCallback.onPositionChanged(mScrollPercent);
-            if (mScrollPercent >= mScrollThreshold) {
+            if (mScrollPercent >= 0.999f) {
                 if (!mSwipeHelper.isFinishing()) {
                     mSwipeHelper.finish();
                     mSwipeHelper.overridePendingTransition(0, 0);
