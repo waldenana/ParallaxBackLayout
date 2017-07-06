@@ -38,17 +38,17 @@ public class ParallaxBackLayout extends FrameLayout {
     //region cont
     @IntDef({LAYOUT_COVER, LAYOUT_PARALLAX, LAYOUT_SLIDE, LAYOUT_CUSTOM})
     @Retention(RetentionPolicy.SOURCE)
-    private @interface LayoutType {
+    public  @interface LayoutType {
     }
 
     @IntDef({ViewDragHelper.EDGE_LEFT, EDGE_RIGHT, EDGE_TOP, EDGE_BOTTOM})
     @Retention(RetentionPolicy.SOURCE)
-    private @interface Edge {
+    public  @interface Edge {
     }
 
     @IntDef({EDGE_MODE_DEFAULT, EDGE_MODE_FULL})
     @Retention(RetentionPolicy.SOURCE)
-    private @interface EdgeMode {
+    public  @interface EdgeMode {
     }
 
     private static final int DEFAULT_SCRIM_COLOR = 0x99000000;

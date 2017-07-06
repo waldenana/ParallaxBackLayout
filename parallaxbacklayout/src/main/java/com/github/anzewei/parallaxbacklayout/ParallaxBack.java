@@ -25,7 +25,10 @@ public @interface ParallaxBack {
         private Edge(int value) {
             this.value = value;
         }
-        public int getValue() {
+
+        public
+        @ParallaxBackLayout.Edge
+        int getValue() {
             return value;
         }
     }
@@ -34,13 +37,35 @@ public @interface ParallaxBack {
      * The enum Layout.
      */
     public enum Layout {
-        PARALLAX(ParallaxBackLayout.LAYOUT_PARALLAX), FULL(ParallaxBackLayout.LAYOUT_COVER);
+        PARALLAX(ParallaxBackLayout.LAYOUT_PARALLAX), COVER(ParallaxBackLayout.LAYOUT_COVER), SLIDE(ParallaxBackLayout.LAYOUT_SLIDE);
         private final int value;
 
         private Layout(int value) {
             this.value = value;
         }
-        public int getValue() {
+
+        public
+        @ParallaxBackLayout.LayoutType
+        int getValue() {
+            return value;
+        }
+
+    }
+
+    /**
+     * Slide mode.
+     */
+    public enum EdgeMode {
+        FULLSCREEN(ParallaxBackLayout.EDGE_MODE_FULL),
+        EDGE(ParallaxBackLayout.EDGE_MODE_DEFAULT);
+        private final int value;
+
+        private EdgeMode(int value) {
+            this.value = value;
+        }
+
+        public @ParallaxBackLayout.EdgeMode
+        int getValue() {
             return value;
         }
 
@@ -54,10 +79,17 @@ public @interface ParallaxBack {
     Edge edge() default Edge.LEFT;
 
     /**
-     * Back layout type.
+     * The  slide Transform.
      *
      * @return the layout type ,default parallax
      */
     Layout layout() default Layout.PARALLAX;
+
+    /**
+     * The slide distance
+     *
+     * @return default edge
+     */
+    EdgeMode edgeMode() default EdgeMode.EDGE;
 
 }

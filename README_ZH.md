@@ -30,9 +30,43 @@ public class DetailActivity extends AppCompatActivity {
 }
 ```
 - 这样DetailActivity就可以滑动返回了
-
 #高级用法
-##控制返回
+##annotation高级配置
+
+``` java
+@ParallaxBack(edge = ParallaxBack.Edge.RIGHT,layout = ParallaxBack.Layout.PARALLAX)
+````
+
+注意：**其中edge控制滑动方向，layout设置滑动效果**
+
+###滑动效果默认有3种方式
+- PARALLAX 视差返回，类似微信的滑动返回效果
+- COVER 上级activity不会滑动，只滑动当前activity，有点像抽屉
+- SLIDE 跟随滑动，上一级会紧贴着当前activity滑动
+###自定义滑动效果
+- 首先实现滑动效果
+``` java
+public class MyTransform implements ITransform {
+    @Override
+    public void transform(Canvas canvas, ParallaxBackLayout parallaxBackLayout, View child) {
+        //这里对canvas做变换就可以了，可以看一下 CoverTransform ParallaxTransform SlideTransform
+    }
+}
+
+```
+- 设置自定义效果
+``` java
+ParallaxBackLayout layout = ParallaxHelper.getParallaxBackLayout(activity, true);
+layout.setLayoutType(LAYOUT_CUSTOM,new MyTransform());
+```
+##全屏滑动和边缘滑动
+
+``` java
+ParallaxBackLayout layout = ParallaxHelper.getParallaxBackLayout(activity, true);
+layout.setEdgeMode(EDGE_MODE_FULL);//全屏滑动
+layout.setEdgeMode(EDGE_MODE_DEFAULT);//边缘滑动
+```
+##禁用返回
 如果需要对DetailActivity进行滑动返回的控制，如某些情况不希望滑动，那可以使用以下代码
 
 
@@ -40,7 +74,7 @@ public class DetailActivity extends AppCompatActivity {
 @ParallaxBack
 public class DetailActivity extends AppCompatActivity {
      private void disableBack(){
-         ParallaxHelper.getInstance().getParallaxBackLayout(this).setEnableGesture(false);
+         ParallaxHelper.getInstance().disableParallaxBack(this);
      }
 }
 ```

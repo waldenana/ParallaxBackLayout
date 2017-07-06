@@ -59,8 +59,8 @@ public class BaseActivity extends AppCompatActivity implements RadioGroup.OnChec
             }
 
         } else {
-            setChildEnable(mGroupLayout,false);
-            setChildEnable(mGroupEdge,false);
+            setChildEnable(mGroupLayout, false);
+            setChildEnable(mGroupEdge, false);
             radioGroup.check(R.id.radio_none);
         }
 
@@ -87,17 +87,17 @@ public class BaseActivity extends AppCompatActivity implements RadioGroup.OnChec
                 break;
             case R.id.radio_none:
                 ParallaxHelper.disableParallaxBack(this);
-                setChildEnable(mGroupLayout,false);
-                setChildEnable(mGroupEdge,false);
+                setChildEnable(mGroupLayout, false);
+                setChildEnable(mGroupEdge, false);
                 break;
             case R.id.radio_cover:
-                ParallaxHelper.getParallaxBackLayout(this, true).setLayoutType(ParallaxBackLayout.LAYOUT_COVER,null);
+                ParallaxHelper.getParallaxBackLayout(this, true).setLayoutType(ParallaxBackLayout.LAYOUT_COVER, null);
                 break;
             case R.id.radio_parallax:
-                ParallaxHelper.getParallaxBackLayout(this, true).setLayoutType(ParallaxBackLayout.LAYOUT_PARALLAX,null);
+                ParallaxHelper.getParallaxBackLayout(this, true).setLayoutType(ParallaxBackLayout.LAYOUT_PARALLAX, null);
                 break;
             case R.id.radio_slide:
-                ParallaxHelper.getParallaxBackLayout(this, true).setLayoutType(ParallaxBackLayout.LAYOUT_SLIDE,null);
+                ParallaxHelper.getParallaxBackLayout(this, true).setLayoutType(ParallaxBackLayout.LAYOUT_SLIDE, null);
                 break;
             case R.id.radio_default:
                 ParallaxHelper.getParallaxBackLayout(this, true).setEdgeMode(ParallaxBackLayout.EDGE_MODE_DEFAULT);
@@ -108,20 +108,19 @@ public class BaseActivity extends AppCompatActivity implements RadioGroup.OnChec
         }
     }
 
-    private void setEdgeFlag(int edgeFlag){
+    private void setEdgeFlag(int edgeFlag) {
         ParallaxBackLayout layout = ParallaxHelper.getParallaxBackLayout(this, true);
         layout.setEdgeFlag(edgeFlag);
         layout.setEnableGesture(true);
-        setChildEnable(mGroupLayout,true);
-        setChildEnable(mGroupEdge,true);
+        setChildEnable(mGroupLayout, true);
+        setChildEnable(mGroupEdge, true);
     }
 
     @Override
     public void onBackPressed() {
-        ParallaxBackLayout layout = ParallaxHelper.getParallaxBackLayout(this,false);
-        if (layout!= null){
-            layout.scrollToFinishActivity(0);
-        }else super.onBackPressed();
+        ParallaxBackLayout layout = ParallaxHelper.getParallaxBackLayout(this, false);
+        if (layout == null || !layout.scrollToFinishActivity(0))
+            super.onBackPressed();
     }
 
     public void onClick(View view) {
@@ -149,8 +148,8 @@ public class BaseActivity extends AppCompatActivity implements RadioGroup.OnChec
         startActivity(intent);
     }
 
-    private void setChildEnable(ViewGroup group,boolean enable){
-        int count  = group.getChildCount();
+    private void setChildEnable(ViewGroup group, boolean enable) {
+        int count = group.getChildCount();
         for (int i = 0; i < count; i++) {
             group.getChildAt(i).setEnabled(enable);
         }

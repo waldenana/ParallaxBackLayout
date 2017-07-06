@@ -26,5 +26,10 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
-
+    <style name="Animation_Right" >
+        <item name="android:activityOpenEnterAnimation">@anim/pl_slide_from_right</item>
+        <item name="android:activityOpenExitAnimation">@anim/pl_slide_out_to_left</item>
+        <item name="android:activityCloseEnterAnimation">@anim/pl_slide_in_from_left</item>
+        <item name="android:activityCloseExitAnimation">@anim/pl_slide_out_to_right</item>
+    </style>
 </resources>

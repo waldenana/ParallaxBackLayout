@@ -42,6 +42,7 @@ public class ParallaxHelper implements Application.ActivityLifecycleCallbacks {
         if (mLinkedStack.size() > 0 && parallaxBack != null) {
             ParallaxBackLayout layout = enableParallaxBack(activity);
             layout.setEdgeFlag(parallaxBack.edge().getValue());
+            layout.setEdgeMode(parallaxBack.edgeMode().getValue());
             layout.setLayoutType(parallaxBack.layout().getValue(),null);
         }
     }

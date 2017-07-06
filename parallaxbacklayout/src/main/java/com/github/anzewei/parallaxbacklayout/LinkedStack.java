@@ -1,6 +1,5 @@
 package com.github.anzewei.parallaxbacklayout;
 
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 
