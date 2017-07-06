@@ -38,17 +38,17 @@ public class ParallaxBackLayout extends FrameLayout {
     //region cont
     @IntDef({LAYOUT_COVER, LAYOUT_PARALLAX, LAYOUT_SLIDE, LAYOUT_CUSTOM})
     @Retention(RetentionPolicy.SOURCE)
-    public  @interface LayoutType {
+    public @interface LayoutType {
     }
 
     @IntDef({ViewDragHelper.EDGE_LEFT, EDGE_RIGHT, EDGE_TOP, EDGE_BOTTOM})
     @Retention(RetentionPolicy.SOURCE)
-    public  @interface Edge {
+    public @interface Edge {
     }
 
     @IntDef({EDGE_MODE_DEFAULT, EDGE_MODE_FULL})
     @Retention(RetentionPolicy.SOURCE)
-    public  @interface EdgeMode {
+    public @interface EdgeMode {
     }
 
     private static final int DEFAULT_SCRIM_COLOR = 0x99000000;
@@ -176,6 +176,7 @@ public class ParallaxBackLayout extends FrameLayout {
     @Override
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
         mInLayout = true;
+        applyWindowInset();
         if (mContentView != null) {
             int cleft = mContentLeft;
             int ctop = mContentTop;
@@ -298,11 +299,13 @@ public class ParallaxBackLayout extends FrameLayout {
 
     /**
      * set slide callback
+     *
      * @param slideCallback callback
      */
     public void setSlideCallback(ParallaxSlideCallback slideCallback) {
         mSlideCallback = slideCallback;
     }
+
     /**
      * Set scroll threshold, we will close the activity, when scrollPercent over
      * this value
