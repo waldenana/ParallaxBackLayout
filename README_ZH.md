@@ -1,5 +1,6 @@
 # ParallaxBackLayout
 [![Download](https://api.bintray.com/packages/anzewei/maven/com.github.anzewei/images/download.svg)](https://bintray.com/anzewei/maven/com.github.anzewei/_latestVersion)
+
 仿微信的滑动返回Activity（视差滑动）.
 
 [![Watch the video](https://github.com/anzewei/ParallaxBackLayout/blob/master/ext/video.png)](https://youtu.be/6da7UZh8MRk)
@@ -30,8 +31,10 @@ public class DetailActivity extends AppCompatActivity {
 }
 ```
 - 这样DetailActivity就可以滑动返回了
-#高级用法
-##annotation高级配置
+
+# 高级用法
+
+## annotation高级配置
 
 ``` java
 @ParallaxBack(edge = ParallaxBack.Edge.RIGHT,layout = ParallaxBack.Layout.PARALLAX)
@@ -39,11 +42,13 @@ public class DetailActivity extends AppCompatActivity {
 
 注意：**其中edge控制滑动方向，layout设置滑动效果**
 
-###滑动效果默认有3种方式
+## 滑动效果默认有3种方式
+
 - PARALLAX 视差返回，类似微信的滑动返回效果
 - COVER 上级activity不会滑动，只滑动当前activity，有点像抽屉
 - SLIDE 跟随滑动，上一级会紧贴着当前activity滑动
-###自定义滑动效果
+
+## 自定义滑动效果
 - 首先实现滑动效果
 ``` java
 public class MyTransform implements ITransform {
@@ -54,19 +59,24 @@ public class MyTransform implements ITransform {
 }
 
 ```
+
 - 设置自定义效果
+
 ``` java
 ParallaxBackLayout layout = ParallaxHelper.getParallaxBackLayout(activity, true);
 layout.setLayoutType(LAYOUT_CUSTOM,new MyTransform());
 ```
-##全屏滑动和边缘滑动
+
+## 全屏滑动和边缘滑动
 
 ``` java
 ParallaxBackLayout layout = ParallaxHelper.getParallaxBackLayout(activity, true);
 layout.setEdgeMode(EDGE_MODE_FULL);//全屏滑动
 layout.setEdgeMode(EDGE_MODE_DEFAULT);//边缘滑动
 ```
-##禁用返回
+
+## 禁用返回
+
 如果需要对DetailActivity进行滑动返回的控制，如某些情况不希望滑动，那可以使用以下代码
 
 
@@ -78,7 +88,7 @@ public class DetailActivity extends AppCompatActivity {
      }
 }
 ```
-##更多api
+## 更多api
 - setShadowDrawable  
    设置阴影
 - setEdgeFlag  
@@ -100,6 +110,8 @@ compile 'com.github.anzewei:parallaxbacklayout:0.5'
 ```
 
 # 更新
+- 日期 2017.06.19  版本  1.1.6
+更新了annotation
 - 日期 2017.06.19  版本  1.1.2
 提供更多接口
 新增自定义切换样式
