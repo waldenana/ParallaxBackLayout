@@ -17,7 +17,7 @@ import android.view.ViewGroup;
 import android.view.WindowInsets;
 import android.widget.FrameLayout;
 
-import com.github.anzewei.parallaxbacklayout.ViewDragHelper;
+import com.github.anzewei.parallaxbacklayout.utils.ViewDragHelper;
 import com.github.anzewei.parallaxbacklayout.transform.CoverTransform;
 import com.github.anzewei.parallaxbacklayout.transform.ITransform;
 import com.github.anzewei.parallaxbacklayout.transform.ParallaxTransform;
@@ -26,9 +26,9 @@ import com.github.anzewei.parallaxbacklayout.transform.SlideTransform;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
-import static com.github.anzewei.parallaxbacklayout.ViewDragHelper.EDGE_BOTTOM;
-import static com.github.anzewei.parallaxbacklayout.ViewDragHelper.EDGE_RIGHT;
-import static com.github.anzewei.parallaxbacklayout.ViewDragHelper.EDGE_TOP;
+import static com.github.anzewei.parallaxbacklayout.utils.ViewDragHelper.EDGE_BOTTOM;
+import static com.github.anzewei.parallaxbacklayout.utils.ViewDragHelper.EDGE_RIGHT;
+import static com.github.anzewei.parallaxbacklayout.utils.ViewDragHelper.EDGE_TOP;
 
 /**
  * The type Parallax back layout.
@@ -444,6 +444,7 @@ public class ParallaxBackLayout extends FrameLayout {
         return mInsets.left;
     }
 
+    @Deprecated
     public int getLayoutType() {
         return mLayoutType;
     }
@@ -453,6 +454,7 @@ public class ParallaxBackLayout extends FrameLayout {
      *
      * @param layoutType the layout type
      */
+    @Deprecated
     public void setLayoutType(@LayoutType int layoutType, ITransform transform) {
         mLayoutType = layoutType;
         switch (layoutType) {
@@ -472,6 +474,14 @@ public class ParallaxBackLayout extends FrameLayout {
         }
     }
 
+    /**
+     * Set transform.
+     *
+     * @param transform the transform
+     */
+    public void setTransform(ITransform transform){
+        mTransform = transform;
+    }
 
     //endregion
 

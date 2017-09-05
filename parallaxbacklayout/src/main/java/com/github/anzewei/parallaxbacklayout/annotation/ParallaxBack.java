@@ -1,5 +1,6 @@
-package com.github.anzewei.parallaxbacklayout;
+package com.github.anzewei.parallaxbacklayout.annotation;
 
+import com.github.anzewei.parallaxbacklayout.utils.ViewDragHelper;
 import com.github.anzewei.parallaxbacklayout.widget.ParallaxBackLayout;
 
 import java.lang.annotation.ElementType;
@@ -83,8 +84,10 @@ public @interface ParallaxBack {
      *
      * @return the layout type ,default parallax
      */
+    @Deprecated
     Layout layout() default Layout.PARALLAX;
 
+    int transform() default ParallaxBackLayout.LAYOUT_PARALLAX;
     /**
      * The slide distance
      *

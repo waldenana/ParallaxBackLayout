@@ -2,11 +2,14 @@ package com.github.anzewei.parallaxbacklayout;
 
 import android.app.Activity;
 import android.app.Application;
-import android.graphics.Canvas;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.github.anzewei.parallaxbacklayout.annotation.ParallaxBack;
+import com.github.anzewei.parallaxbacklayout.transform.TransformFactory;
+import com.github.anzewei.parallaxbacklayout.utils.LinkedStack;
+import com.github.anzewei.parallaxbacklayout.widget.BackgroundViewFactory;
 import com.github.anzewei.parallaxbacklayout.widget.ParallaxBackLayout;
 
 /**
@@ -16,6 +19,8 @@ public class ParallaxHelper implements Application.ActivityLifecycleCallbacks {
 
     private static ParallaxHelper sParallaxHelper;
     private LinkedStack<Activity, TraceInfo> mLinkedStack = new LinkedStack<>();
+    private BackgroundViewFactory mBackgroundViewFactory;
+    private TransformFactory mTransformFactory;
 
     /**
      * Gets instance.
@@ -23,9 +28,22 @@ public class ParallaxHelper implements Application.ActivityLifecycleCallbacks {
      * @return the instance
      */
     public static ParallaxHelper getInstance() {
-        if (sParallaxHelper == null)
+        if (sParallaxHelper == null) {
             sParallaxHelper = new ParallaxHelper();
+            sParallaxHelper.config(new Config());
+        }
         return sParallaxHelper;
+    }
+
+    /**
+     * Config.
+     *
+     * @param config the config
+     */
+    public void config(Config config) {
+        config.confirm();
+        mBackgroundViewFactory = config.mBackgroundViewFactory;
+        mTransformFactory = config.mTransformFactory;
     }
 
     private ParallaxHelper() {
@@ -43,7 +61,9 @@ public class ParallaxHelper implements Application.ActivityLifecycleCallbacks {
             ParallaxBackLayout layout = enableParallaxBack(activity);
             layout.setEdgeFlag(parallaxBack.edge().getValue());
             layout.setEdgeMode(parallaxBack.edgeMode().getValue());
-            layout.setLayoutType(parallaxBack.layout().getValue(),null);
+            //old version used layout enum
+            int trans = parallaxBack.layout() != ParallaxBack.Layout.PARALLAX ? parallaxBack.layout().getValue() : parallaxBack.transform();
+            layout.setTransform(sParallaxHelper.mTransformFactory.createTransform(trans));
         }
     }
 
@@ -138,11 +158,51 @@ public class ParallaxHelper implements Application.ActivityLifecycleCallbacks {
             ParallaxBackLayout backLayout = new ParallaxBackLayout(activity);
             backLayout.setId(R.id.pllayout);
             backLayout.attachToActivity(activity);
-            backLayout.setBackgroundView(new GoBackView(activity));
+            backLayout.setBackgroundView(sParallaxHelper.mBackgroundViewFactory.createView(activity));
             return backLayout;
         }
         return null;
     }
+
+    /**
+     * Get the activity under param
+     *
+     * @param activity activity
+     * @return the activity  under param
+     */
+    public Activity underActivity(Activity activity) {
+        return mLinkedStack.before(activity);
+    }
+
+    /**
+     * The type Config.
+     */
+    public static class Config {
+        private BackgroundViewFactory mBackgroundViewFactory;
+        private TransformFactory mTransformFactory;
+
+        public Config() {
+
+        }
+
+        public Config transform(TransformFactory factory) {
+            mTransformFactory = factory;
+            return this;
+        }
+
+        public Config background(BackgroundViewFactory factory) {
+            mBackgroundViewFactory = factory;
+            return this;
+        }
+        private void confirm(){
+            if (mBackgroundViewFactory == null)
+                mBackgroundViewFactory = new BackgroundViewFactory.DEFAULT();
+            if (mTransformFactory == null)
+                mTransformFactory = new TransformFactory.DEFAULT();
+        }
+
+    }
+
 
     /**
      * The type Trace info.
@@ -151,27 +211,5 @@ public class ParallaxHelper implements Application.ActivityLifecycleCallbacks {
         private Activity mCurrent;
     }
 
-    public static class GoBackView implements ParallaxBackLayout.IBackgroundView {
 
-        private Activity mActivity;
-        private Activity mActivityBack;
-
-        private GoBackView(Activity activity) {
-            mActivity = activity;
-        }
-
-
-        @Override
-        public void draw(Canvas canvas) {
-            if (mActivityBack != null) {
-                mActivityBack.getWindow().getDecorView().requestLayout();
-                mActivityBack.getWindow().getDecorView().draw(canvas);
-            }
-        }
-
-        @Override
-        public boolean canGoBack() {
-            return (mActivityBack = sParallaxHelper.mLinkedStack.before(mActivity)) != null;
-        }
-    }
 }

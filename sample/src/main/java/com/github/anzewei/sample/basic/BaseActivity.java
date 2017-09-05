@@ -8,10 +8,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioGroup;
-import android.widget.TextView;
 
 import com.github.anzewei.parallaxbacklayout.ParallaxHelper;
-import com.github.anzewei.parallaxbacklayout.ViewDragHelper;
+import com.github.anzewei.parallaxbacklayout.utils.ViewDragHelper;
 import com.github.anzewei.parallaxbacklayout.widget.ParallaxBackLayout;
 import com.github.anzewei.sample.R;
 

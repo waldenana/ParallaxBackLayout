@@ -5,10 +5,10 @@ import android.view.View;
 
 import com.github.anzewei.parallaxbacklayout.widget.ParallaxBackLayout;
 
-import static com.github.anzewei.parallaxbacklayout.ViewDragHelper.EDGE_BOTTOM;
-import static com.github.anzewei.parallaxbacklayout.ViewDragHelper.EDGE_LEFT;
-import static com.github.anzewei.parallaxbacklayout.ViewDragHelper.EDGE_RIGHT;
-import static com.github.anzewei.parallaxbacklayout.ViewDragHelper.EDGE_TOP;
+import static com.github.anzewei.parallaxbacklayout.utils.ViewDragHelper.EDGE_BOTTOM;
+import static com.github.anzewei.parallaxbacklayout.utils.ViewDragHelper.EDGE_LEFT;
+import static com.github.anzewei.parallaxbacklayout.utils.ViewDragHelper.EDGE_RIGHT;
+import static com.github.anzewei.parallaxbacklayout.utils.ViewDragHelper.EDGE_TOP;
 
 /**
  * ParallaxBackLayout
