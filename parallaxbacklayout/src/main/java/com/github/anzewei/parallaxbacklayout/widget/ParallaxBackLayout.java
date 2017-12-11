@@ -114,6 +114,7 @@ public class ParallaxBackLayout extends FrameLayout {
 
     private boolean mInLayout;
 
+    private int mFlingVelocity = 30;
     /**
      * Edge being dragged
      */
@@ -268,18 +269,25 @@ public class ParallaxBackLayout extends FrameLayout {
     private void drawShadow(Canvas canvas, View child) {
         if (mContentLeft == 0 && mContentTop == 0)
             return;
+        if (mShadowLeft ==null)
+            return;
         if (mEdgeFlag == EDGE_LEFT) {
             mShadowLeft.setBounds(child.getLeft() - mShadowLeft.getIntrinsicWidth(), child.getTop(),
                     child.getLeft(), child.getBottom());
+            mShadowLeft.setAlpha((getWidth()-child.getLeft())*255/getWidth());
         } else if (mEdgeFlag == EDGE_RIGHT) {
             mShadowLeft.setBounds(child.getRight(), child.getTop(),
                     child.getRight() + mShadowLeft.getIntrinsicWidth(), child.getBottom());
+            mShadowLeft.setAlpha(child.getRight()*255/getWidth());
         } else if (mEdgeFlag == EDGE_BOTTOM) {
             mShadowLeft.setBounds(child.getLeft(), child.getBottom(),
                     child.getRight(), child.getBottom() + mShadowLeft.getIntrinsicHeight());
+
+            mShadowLeft.setAlpha(child.getBottom()*255/getHeight());
         } else if (mEdgeFlag == EDGE_TOP) {
             mShadowLeft.setBounds(child.getLeft(), child.getTop() - mShadowLeft.getIntrinsicHeight() + getSystemTop(),
                     child.getRight(), child.getTop() + getSystemTop());
+            mShadowLeft.setAlpha((getHeight()-child.getTop())*255/getHeight());
         }
         mShadowLeft.draw(canvas);
     }
@@ -479,7 +487,7 @@ public class ParallaxBackLayout extends FrameLayout {
      *
      * @param transform the transform
      */
-    public void setTransform(ITransform transform){
+    public void setTransform(ITransform transform) {
         mTransform = transform;
     }
 
@@ -553,21 +561,40 @@ public class ParallaxBackLayout extends FrameLayout {
         public void onViewReleased(View releasedChild, float xvel, float yvel) {
             final int childWidth = releasedChild.getWidth();
             final int childHeight = releasedChild.getHeight();
-
+            boolean fling = false;
             int left = mInsets.left, top = 0;
             if ((mTrackingEdge & EDGE_LEFT) != 0) {
-                left = xvel >= 0 && mScrollPercent > mScrollThreshold ? childWidth + mInsets.left : mInsets.left;
+                if (Math.abs(xvel) > mFlingVelocity) {
+                    fling = true;
+                }
+                left = xvel >= 0 && (fling || mScrollPercent > mScrollThreshold)
+                        ? childWidth + mInsets.left : mInsets.left;
             }
             if ((mTrackingEdge & EDGE_RIGHT) != 0) {
-                left = xvel <= 0 && mScrollPercent > mScrollThreshold ? -childWidth + mInsets.left : mInsets.left;
+                if (Math.abs(xvel) > mFlingVelocity) {
+                    fling = true;
+                }
+                left = xvel <= 0 && (fling || mScrollPercent > mScrollThreshold)
+                        ? -childWidth + mInsets.left : mInsets.left;
             }
             if ((mTrackingEdge & EDGE_TOP) != 0) {
-                top = yvel >= 0 && mScrollPercent > mScrollThreshold ? childHeight : 0;
+                if (Math.abs(yvel) > mFlingVelocity) {
+                    fling = true;
+                }
+                top = yvel >= 0 && (fling || mScrollPercent > mScrollThreshold)
+                        ? childHeight : 0;
             }
             if ((mTrackingEdge & EDGE_BOTTOM) != 0) {
-                top = yvel <= 0 && mScrollPercent > mScrollThreshold ? -childHeight + getSystemTop() : 0;
+                if (Math.abs(yvel) > mFlingVelocity) {
+                    fling = true;
+                }
+                top = yvel <= 0 && (fling || mScrollPercent > mScrollThreshold)
+                        ? -childHeight + getSystemTop() : 0;
             }
-            mDragHelper.settleCapturedViewAt(left, top);
+//            if (fling)
+//                mDragHelper.flingCapturedView(left, top,left,top);
+//            else
+                mDragHelper.settleCapturedViewAt(left, top);
             invalidate();
         }
 
