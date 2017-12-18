@@ -118,7 +118,7 @@ public class ParallaxBackLayout extends FrameLayout {
      * Edge being dragged
      */
     private int mTrackingEdge;
-
+    private int mFlingVelocity = 30;
     private
     @Edge
     int mEdgeFlag = -1;
@@ -317,6 +317,15 @@ public class ParallaxBackLayout extends FrameLayout {
             throw new IllegalArgumentException("Threshold value should be between 0 and 1.0");
         }
         mScrollThreshold = threshold;
+    }
+    /**
+     * Set scroll threshold, we will close the activity, when scrollPercent over
+     * this value
+     *
+     * @param threshold the threshold
+     */
+    public void setVelocity(int velocity) {
+        mFlingVelocity = velocity;
     }
 
     /**
@@ -543,19 +552,35 @@ public class ParallaxBackLayout extends FrameLayout {
         public void onViewReleased(View releasedChild, float xvel, float yvel) {
             final int childWidth = releasedChild.getWidth();
             final int childHeight = releasedChild.getHeight();
-
+            boolean fling = false;
             int left = mInsets.left, top = 0;
             if ((mTrackingEdge & EDGE_LEFT) != 0) {
-                left = xvel >= 0 && mScrollPercent > mScrollThreshold ? childWidth + mInsets.left : mInsets.left;
+                if (Math.abs(xvel) > mFlingVelocity) {
+                    fling = true;
+                }
+                left = xvel >= 0 && (fling || mScrollPercent > mScrollThreshold)
+                        ? childWidth + mInsets.left : mInsets.left;
             }
             if ((mTrackingEdge & EDGE_RIGHT) != 0) {
-                left = xvel <= 0 && mScrollPercent > mScrollThreshold ? -childWidth + mInsets.left : mInsets.left;
+                if (Math.abs(xvel) > mFlingVelocity) {
+                    fling = true;
+                }
+                left = xvel <= 0 && (fling || mScrollPercent > mScrollThreshold)
+                        ? -childWidth + mInsets.left : mInsets.left;
             }
             if ((mTrackingEdge & EDGE_TOP) != 0) {
-                top = yvel >= 0 && mScrollPercent > mScrollThreshold ? childHeight : 0;
+                if (Math.abs(yvel) > mFlingVelocity) {
+                    fling = true;
+                }
+                top = yvel >= 0 && (fling || mScrollPercent > mScrollThreshold)
+                        ? childHeight : 0;
             }
             if ((mTrackingEdge & EDGE_BOTTOM) != 0) {
-                top = yvel <= 0 && mScrollPercent > mScrollThreshold ? -childHeight + getSystemTop() : 0;
+                if (Math.abs(yvel) > mFlingVelocity) {
+                    fling = true;
+                }
+                top = yvel <= 0 && (fling || mScrollPercent > mScrollThreshold)
+                        ? -childHeight + getSystemTop() : 0;
             }
             mDragHelper.settleCapturedViewAt(left, top);
             invalidate();
