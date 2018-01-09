@@ -103,12 +103,12 @@ public class DetailActivity extends AppCompatActivity {
   设置上级view的绘制方式，可继承自GoBackView，在draw方法中做特殊处理
 
 ## 常见问题
-- 华为手机返回时闪屏
-  请使用1.1.9以后版本
-- 使用fresco，滑动返回时看不到图片
+- 华为手机返回时闪屏  
+   请使用1.1.9以后版本
+- 使用fresco，滑动返回时看不到图片  
   这个问题是因为Imageview的onVisibilityAggregated会调用drawable的setVisible，而fresco的RootDrawable在绘制时会判断visible，
   为false时不绘制，具体可见com.facebook.drawee.generic.RootDrawable-draw(Canvas);
-  解决方法是继承SimpleDraweeView重写onVisibilityAggregated
+  解决方法是继承SimpleDraweeView重写onVisibilityAggregated  
 ``` java
    @Override
     public void onVisibilityAggregated(boolean isVisible) {
