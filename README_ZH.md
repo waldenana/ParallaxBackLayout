@@ -20,14 +20,14 @@ compile 'com.github.anzewei:parallaxbacklayout:lastversion'
 ## 在application中注册ParallaxHelper
 
 ``` java
-     registerActivityLifecycleCallbacks(ParallaxHelper.getInstance());
+registerActivityLifecycleCallbacks(ParallaxHelper.getInstance());
 ```
 ## 对需要滑动的activity增加annotation
 
 ``` java
 @ParallaxBack
 public class DetailActivity extends AppCompatActivity {
- 。。。
+  // 
 }
 ```
 - 这样DetailActivity就可以滑动返回了
@@ -124,6 +124,14 @@ public class DetailActivity extends AppCompatActivity {
 
 ``` groovy
 compile 'com.github.anzewei:parallaxbacklayout:0.5'
+```
+
+# 混淆保护
+```
+-keep public enum com.github.anzewei.parallaxbacklayout.ParallaxBack$** {
+    **[] $VALUES;
+    public *;
+}
 ```
 
 # 更新
