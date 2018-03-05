@@ -18,18 +18,20 @@ import android.view.WindowInsets;
 import android.widget.FrameLayout;
 
 import com.github.anzewei.parallaxbacklayout.R;
-import com.github.anzewei.parallaxbacklayout.ViewDragHelper;
 import com.github.anzewei.parallaxbacklayout.transform.CoverTransform;
 import com.github.anzewei.parallaxbacklayout.transform.ITransform;
 import com.github.anzewei.parallaxbacklayout.transform.ParallaxTransform;
 import com.github.anzewei.parallaxbacklayout.transform.SlideTransform;
+import com.github.anzewei.parallaxbacklayout.utils.ViewDragHelper;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
-import static com.github.anzewei.parallaxbacklayout.ViewDragHelper.EDGE_BOTTOM;
-import static com.github.anzewei.parallaxbacklayout.ViewDragHelper.EDGE_RIGHT;
-import static com.github.anzewei.parallaxbacklayout.ViewDragHelper.EDGE_TOP;
+import static com.github.anzewei.parallaxbacklayout.utils.ViewDragHelper.EDGE_BOTTOM;
+import static com.github.anzewei.parallaxbacklayout.utils.ViewDragHelper.EDGE_LEFT;
+import static com.github.anzewei.parallaxbacklayout.utils.ViewDragHelper.EDGE_RIGHT;
+import static com.github.anzewei.parallaxbacklayout.utils.ViewDragHelper.EDGE_TOP;
+
 
 /**
  * The type Parallax back layout.
@@ -42,7 +44,7 @@ public class ParallaxBackLayout extends FrameLayout {
     public @interface LayoutType {
     }
 
-    @IntDef({ViewDragHelper.EDGE_LEFT, EDGE_RIGHT, EDGE_TOP, EDGE_BOTTOM})
+    @IntDef({EDGE_LEFT, EDGE_RIGHT, EDGE_TOP, EDGE_BOTTOM})
     @Retention(RetentionPolicy.SOURCE)
     public @interface Edge {
     }
@@ -62,7 +64,6 @@ public class ParallaxBackLayout extends FrameLayout {
     private static final float DEFAULT_SCROLL_THRESHOLD = 0.5f;
 
     private static final int OVERSCROLL_DISTANCE = 0;
-    private static final int EDGE_LEFT = ViewDragHelper.EDGE_LEFT;
 
     /**
      * The constant LAYOUT_PARALLAX.
@@ -243,7 +244,7 @@ public class ParallaxBackLayout extends FrameLayout {
             mDragHelper.setEdgeSize(mInsets.top + mDragHelper.getEdgeSizeDefault());
         else if (mEdgeFlag == EDGE_BOTTOM) {
             mDragHelper.setEdgeSize(mInsets.bottom + mDragHelper.getEdgeSizeDefault());
-        } else if (mEdgeFlag == ViewDragHelper.EDGE_LEFT) {
+        } else if (mEdgeFlag == EDGE_LEFT) {
             mDragHelper.setEdgeSize(mDragHelper.getEdgeSizeDefault() + mInsets.left);
         } else
             mDragHelper.setEdgeSize(mDragHelper.getEdgeSizeDefault() + mInsets.right);
