@@ -49,6 +49,14 @@ public class DetailActivity extends AppCompatActivity {
 }
 ```
 
+# Proguard
+```
+-keep public enum com.github.anzewei.parallaxbacklayout.ParallaxBack$** {
+    **[] $VALUES;
+    public *;
+}
+```
+
 # Update
 - Date 2017.05.16  Version  1.0
     Use annotation 
