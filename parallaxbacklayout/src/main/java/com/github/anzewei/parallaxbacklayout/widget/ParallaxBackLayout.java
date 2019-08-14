@@ -161,6 +161,8 @@ public class ParallaxBackLayout extends FrameLayout {
             // FIXME: handle exception
             // issues #9
             return false;
+        } catch (IllegalArgumentException iae){
+            return false;
         }
     }
 
